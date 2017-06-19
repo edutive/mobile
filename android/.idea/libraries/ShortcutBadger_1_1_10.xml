@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="ShortcutBadger-1.1.10">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../node_modules/react-native-firebase/android/build/intermediates/exploded-aar/me.leolin/ShortcutBadger/1.1.10/res" />
+      <root url="jar://$PROJECT_DIR$/../node_modules/react-native-firebase/android/build/intermediates/exploded-aar/me.leolin/ShortcutBadger/1.1.10/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

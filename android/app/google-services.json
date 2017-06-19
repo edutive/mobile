@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "976897345430",
+    "firebase_url": "https://psedu-c19d1.firebaseio.com",
+    "project_id": "psedu-c19d1",
+    "storage_bucket": "psedu-c19d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976897345430:android:4908f2039296eeed",
+        "android_client_info": {
+          "package_name": "com.edutive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976897345430-tkt1vm6rb5hfltcmmkn7qlhar9hutrck.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.edutive",
+            "certificate_hash": "68c083842b73e3ef29c0847b7454e0aea66b3c08"
+          }
+        },
+        {
+          "client_id": "976897345430-4n9e2u716pq6idimnvi8d45cuv0rr6jp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-93YrO6mhlokDt1lVQfHs4baL49a2UqM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976897345430-4n9e2u716pq6idimnvi8d45cuv0rr6jp.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "976897345430-mupm5gjdrsnlj37m96oomcafua5dsiqk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.edutive"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

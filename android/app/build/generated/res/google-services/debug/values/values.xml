@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">976897345430-4n9e2u716pq6idimnvi8d45cuv0rr6jp.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://psedu-c19d1.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">976897345430</string>
+    <string name="google_api_key" translatable="false">AIzaSyA-93YrO6mhlokDt1lVQfHs4baL49a2UqM</string>
+    <string name="google_app_id" translatable="false">1:976897345430:android:4908f2039296eeed</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA-93YrO6mhlokDt1lVQfHs4baL49a2UqM</string>
+    <string name="google_storage_bucket" translatable="false">psedu-c19d1.appspot.com</string>
+    <string name="project_id" translatable="false">psedu-c19d1</string>
+</resources>

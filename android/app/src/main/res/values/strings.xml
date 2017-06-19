@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">edutive</string>
+    <string name="facebook_app_id">307204079726172</string>
+    <string name="fb_login_protocol_scheme">fb307204079726172</string>
 </resources>
