@@ -6,15 +6,17 @@ import {
   View,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  KeyboardAvoidingView
 } from 'react-native';
 
+import { NavigationActions } from 'react-navigation';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from '../firebase';
 
 import Constants from '../contants';
 
-class Login extends React.Component {
+class SignUp extends React.Component {
   static navigationOptions = {
     header: null
   };
@@ -23,30 +25,38 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
+      name: '',
+      username: '',
       email: '',
       password: ''
     };
-
-    firebase.database().ref('users').on('value', snapshot => {
-      const value = snapshot.val();
-      console.log('users', value);
-    });
-  }
-
-  signup() {
-    this.props.navigation.navigate('SignUp');
   }
 
   login() {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .catch(error => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
-      });
+    this.props.navigation.goBack();
+  }
+
+  signup() {
+    if (this.state.email && this.state.password) {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(user => {
+          firebase.database().ref('users').child(user.uid).set({
+            name: this.state.name
+          });
+
+          const resetAction = NavigationActions.reset({
+            index: 0,
+            actions: [NavigationActions.navigate({ routeName: 'Home' })]
+          });
+
+          this.props.navigation.dispatch(resetAction);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 
   facebookLogin() {
@@ -73,8 +83,26 @@ class Login extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <View style={styles.container}>
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.form}>
+          <Text style={styles.label}>Nome</Text>
+          <View style={styles.inputArea}>
+            <TextInput
+              autoCapitalize="none"
+              style={styles.input}
+              onChangeText={name => this.setState({ name })}
+              value={this.state.name}
+            />
+          </View>
+          <Text style={styles.label}>Usuário</Text>
+          <View style={styles.inputArea}>
+            <TextInput
+              autoCapitalize="none"
+              style={styles.input}
+              onChangeText={username => this.setState({ username })}
+              value={this.state.username}
+            />
+          </View>
           <Text style={styles.label}>E-mail</Text>
           <View style={styles.inputArea}>
             <TextInput
@@ -98,24 +126,21 @@ class Login extends React.Component {
             <TouchableOpacity
               color="#000"
               style={{ marginTop: 10 }}
-              onPress={this.signup.bind(this)}
+              onPress={this.login.bind(this)}
             >
-              <Text>Cadastre-se</Text>
+              <Text>Voltar</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={styles.button}
               color="#FFF"
               disabled={this.state.loading}
-              onPress={this.login.bind(this)}
+              onPress={this.signup.bind(this)}
             >
-              <Text style={styles.buttonText}>Entrar</Text>
+              <Text style={styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.buttonFB} onPress={() => this.facebookLogin()}>
-            <Text style={styles.buttonText}>Entrar com Facebook</Text>
-          </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
@@ -123,7 +148,7 @@ class Login extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: 'column',
     backgroundColor: Constants.colors.blue
   },
   logo: {
@@ -135,11 +160,10 @@ const styles = StyleSheet.create({
   },
   form: {
     margin: 20,
+    marginTop: 40,
     padding: 20,
     borderRadius: 8,
-    backgroundColor: '#FFF',
-    flex: 1,
-    alignSelf: 'flex-end'
+    backgroundColor: '#FFF'
   },
   label: {
     color: Constants.colors.orange
@@ -187,4 +211,4 @@ const styles = StyleSheet.create({
   }
 });
 
-module.exports = Login;
+module.exports = SignUp;
