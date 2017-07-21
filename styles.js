@@ -34,5 +34,26 @@ module.exports = {
   buttonText: {
     textAlign: 'center',
     color: '#FFF'
+  },
+  rowBox: {
+    margin: 16,
+    marginBottom: 0,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: Constants.colors.yellow
+  },
+  rowBoxTitle: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: Constants.colors.orange
+  },
+  rowBoxContent: {
+    flexDirection: 'row'
+  },
+  rowBoxContentText: {
+    fontSize: 16,
+    color: Constants.colors.blue,
+    marginLeft: 5,
+    marginRight: 10
   }
 };

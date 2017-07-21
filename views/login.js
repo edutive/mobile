@@ -39,7 +39,7 @@ class Login extends React.Component {
     const user = firebase.auth().currentUser;
 
     if (user) {
-      global.USER = user;
+      global.USER = user._user;
 
       const resetAction = NavigationActions.reset({
         index: 0,

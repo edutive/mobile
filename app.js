@@ -22,6 +22,7 @@ const Home = TabNavigator(
     Profile: { screen: Profile }
   },
   {
+    lazy: true,
     tabBarOptions: {
       activeTintColor: Constants.colors.orange,
       inactiveTintColor: Constants.colors.blue,
