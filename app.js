@@ -1,12 +1,48 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, TabNavigator } from 'react-navigation';
+
+import Constants from './contants';
 
 import Login from './views/login';
 import SignUp from './views/signup';
-import Home from './views/home';
+
+import Quizes from './views/quizes';
+import Subjects from './views/subjects';
+import Messages from './views/messages';
+import Profile from './views/profile';
 
 global.USER = null;
+
+const Home = TabNavigator(
+  {
+    Quizes: { screen: Quizes },
+    Subjects: { screen: Subjects },
+    Messages: { screen: Messages },
+    Profile: { screen: Profile }
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: Constants.colors.orange,
+      labelStyle: {
+        fontSize: 14,
+        marginBottom: 10
+      },
+      style: {
+        height: 70,
+        backgroundColor: 'white',
+        borderTopWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: -2
+        },
+        shadowRadius: 5,
+        shadowOpacity: 0.05
+      }
+    }
+  }
+);
 
 const Edutive = StackNavigator({
   Login: { screen: Login },

@@ -1,12 +1,14 @@
 import React from 'react';
 import { AppRegistry, Button, Text, TextInput, ListView, Alert } from 'react-native';
 import { NavigationActions } from 'react-navigation';
+import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import firebase from '../firebase';
 
-class Home extends React.Component {
+class Profile extends React.Component {
   static navigationOptions = {
-    title: 'Home'
+    title: 'Perfil',
+    tabBarIcon: ({ tintColor }) => <Icon name="user" size={20} color={tintColor} />
   };
 
   constructor(props) {
@@ -34,4 +36,4 @@ class Home extends React.Component {
   }
 }
 
-module.exports = Home;
+module.exports = Profile;
