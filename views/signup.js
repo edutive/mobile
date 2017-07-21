@@ -7,7 +7,8 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Alert
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
@@ -25,8 +26,8 @@ class SignUp extends React.Component {
     super(props);
 
     this.state = {
-      name: '',
-      username: '',
+      firstname: '',
+      lastname: '',
       email: '',
       password: ''
     };
@@ -37,46 +38,36 @@ class SignUp extends React.Component {
   }
 
   signup() {
-    if (this.state.email && this.state.password) {
-      firebase
-        .auth()
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
-        .then(user => {
-          firebase.database().ref('users').child(user.uid).set({
-            name: this.state.name
+    if (this.state.firstname && this.state.lastname && this.state.email && this.state.password) {
+      if (this.state.password.length >= 6) {
+        firebase
+          .auth()
+          .createUserWithEmailAndPassword(this.state.email, this.state.password)
+          .then(user => {
+            firebase.database().ref('users').child(user.uid).set({
+              firstname: this.state.firstname,
+              lastname: this.state.lastname
+            });
+
+            const resetAction = NavigationActions.reset({
+              index: 0,
+              actions: [NavigationActions.navigate({ routeName: 'Home' })]
+            });
+
+            this.props.navigation.dispatch(resetAction);
+          })
+          .catch(error => {
+            if (error.userInfo.error_name === 'ERROR_EMAIL_ALREADY_IN_USE') {
+              Alert.alert('E-mail', 'Esse e-mail já foi utilizado por outro usuário');
+            }
+            console.log(error.userInfo);
           });
-
-          const resetAction = NavigationActions.reset({
-            index: 0,
-            actions: [NavigationActions.navigate({ routeName: 'Home' })]
-          });
-
-          this.props.navigation.dispatch(resetAction);
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  }
-
-  facebookLogin() {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
-      result => {
-        console.log(result);
-        if (result.isCancelled) {
-          alert('Login cancelled');
-        } else {
-          alert('Login success with permissions: ' + result.grantedPermissions.toString());
-
-          AccessToken.getCurrentAccessToken().then(data => {
-            alert(data.accessToken.toString());
-          });
-        }
-      },
-      error => {
-        alert('Login fail with error: ' + error);
+      } else {
+        Alert.alert('Senha', 'Sua senha deve ter 6 digitos ou mais');
       }
-    );
+    } else {
+      Alert.alert('Campos Obrigatórios', 'Por favor, preencha todos os campos');
+    }
   }
 
   render() {
@@ -90,32 +81,38 @@ class SignUp extends React.Component {
             <TextInput
               autoCapitalize="none"
               style={styles.input}
-              onChangeText={name => this.setState({ name })}
-              value={this.state.name}
+              onChangeText={firstname => this.setState({ firstname })}
+              value={this.state.firstname}
+              onSubmitEditing={() => this.refs.lastname.focus()}
             />
           </View>
-          <Text style={styles.label}>Usuário</Text>
+          <Text style={styles.label}>Sobrenome</Text>
           <View style={styles.inputArea}>
             <TextInput
+              ref="lastname"
               autoCapitalize="none"
               style={styles.input}
-              onChangeText={username => this.setState({ username })}
-              value={this.state.username}
+              onChangeText={lastname => this.setState({ lastname })}
+              value={this.state.lastname}
+              onSubmitEditing={() => this.refs.email.focus()}
             />
           </View>
           <Text style={styles.label}>E-mail</Text>
           <View style={styles.inputArea}>
             <TextInput
+              ref="email"
               keyboardType="email-address"
               autoCapitalize="none"
               style={styles.input}
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
+              onSubmitEditing={() => this.refs.password.focus()}
             />
           </View>
           <Text style={styles.label}>Senha</Text>
           <View style={styles.inputArea}>
             <TextInput
+              ref="password"
               secureTextEntry={true}
               style={styles.input}
               onChangeText={password => this.setState({ password })}

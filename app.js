@@ -6,6 +6,8 @@ import Login from './views/login';
 import SignUp from './views/signup';
 import Home from './views/home';
 
+global.USER = null;
+
 const Edutive = StackNavigator({
   Login: { screen: Login },
   SignUp: { screen: SignUp },

@@ -6,9 +6,15 @@ import {
   View,
   StyleSheet,
   TextInput,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView,
+  Dimensions,
+  Alert
 } from 'react-native';
 
+const { width, height } = Dimensions.get('window');
+
+import { NavigationActions } from 'react-navigation';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from '../firebase';
 
@@ -26,11 +32,21 @@ class Login extends React.Component {
       email: '',
       password: ''
     };
+  }
 
-    firebase.database().ref('users').on('value', snapshot => {
-      const value = snapshot.val();
-      console.log('users', value);
-    });
+  componentWillMount() {
+    const user = firebase.auth().currentUser;
+
+    if (user) {
+      global.USER = user;
+
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'Home' })]
+      });
+
+      this.props.navigation.dispatch(resetAction);
+    }
   }
 
   signup() {
@@ -40,12 +56,17 @@ class Login extends React.Component {
   login() {
     firebase
       .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(user => {
+        const resetAction = NavigationActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: 'Home' })]
+        });
+
+        this.props.navigation.dispatch(resetAction);
+      })
       .catch(error => {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // ...
+        Alert.alert('Error', 'Não foi possível realizar o login, verifique seu e-mail e senha');
       });
   }
 
@@ -70,61 +91,70 @@ class Login extends React.Component {
   }
 
   render() {
-    const { navigate } = this.props.navigation;
-
     return (
-      <View style={styles.container}>
-        <View style={styles.form}>
-          <Text style={styles.label}>E-mail</Text>
-          <View style={styles.inputArea}>
-            <TextInput
-              keyboardType="email-address"
-              autoCapitalize="none"
-              style={styles.input}
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-            />
-          </View>
-          <Text style={styles.label}>Senha</Text>
-          <View style={styles.inputArea}>
-            <TextInput
-              secureTextEntry={true}
-              style={styles.input}
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
-            />
-          </View>
-          <View style={styles.row}>
-            <TouchableOpacity
-              color="#000"
-              style={{ marginTop: 10 }}
-              onPress={this.signup.bind(this)}
-            >
-              <Text>Cadastre-se</Text>
+      <ScrollView style={styles.scroll} ref="scroll">
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <Text style={styles.label}>E-mail</Text>
+            <View style={styles.inputArea}>
+              <TextInput
+                keyboardType="email-address"
+                autoCapitalize="none"
+                style={styles.input}
+                onChangeText={email => this.setState({ email })}
+                value={this.state.email}
+                onFocus={() => this.refs.scroll.scrollTo({ x: 0, y: 70, animated: true })}
+                onSubmitEditing={() => this.refs.password.focus()}
+              />
+            </View>
+            <Text style={styles.label}>Senha</Text>
+            <View style={styles.inputArea}>
+              <TextInput
+                ref="password"
+                secureTextEntry={true}
+                style={styles.input}
+                onChangeText={password => this.setState({ password })}
+                value={this.state.password}
+                onFocus={() => this.refs.scroll.scrollTo({ x: 0, y: 70, animated: true })}
+                onBlur={() => this.refs.scroll.scrollTo({ x: 0, y: 0, animated: true })}
+                onSubmitEditing={event => this.refs.scroll.scrollTo({ x: 0, y: 0, animated: true })}
+              />
+            </View>
+            <View style={styles.row}>
+              <TouchableOpacity
+                color="#000"
+                style={{ marginTop: 10 }}
+                onPress={this.signup.bind(this)}
+              >
+                <Text>Cadastre-se</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={styles.button}
+                color="#FFF"
+                disabled={this.state.loading}
+                onPress={this.login.bind(this)}
+              >
+                <Text style={styles.buttonText}>Entrar</Text>
+              </TouchableOpacity>
+            </View>
+            <TouchableOpacity style={styles.buttonFB} onPress={() => this.facebookLogin()}>
+              <Text style={styles.buttonText}>Entrar com Facebook</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              color="#FFF"
-              disabled={this.state.loading}
-              onPress={this.login.bind(this)}
-            >
-              <Text style={styles.buttonText}>Entrar</Text>
-            </TouchableOpacity>
           </View>
-          <TouchableOpacity style={styles.buttonFB} onPress={() => this.facebookLogin()}>
-            <Text style={styles.buttonText}>Entrar com Facebook</Text>
-          </TouchableOpacity>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  scroll: {
     flex: 1,
-    flexDirection: 'row',
     backgroundColor: Constants.colors.blue
+  },
+  container: {
+    height: height,
+    justifyContent: 'flex-end'
   },
   logo: {
     width: 250,
@@ -137,9 +167,7 @@ const styles = StyleSheet.create({
     margin: 20,
     padding: 20,
     borderRadius: 8,
-    backgroundColor: '#FFF',
-    flex: 1,
-    alignSelf: 'flex-end'
+    backgroundColor: '#FFF'
   },
   label: {
     color: Constants.colors.orange
