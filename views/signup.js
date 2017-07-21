@@ -16,6 +16,7 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from '../firebase';
 
 import Constants from '../contants';
+import Styles from '../styles';
 
 class SignUp extends React.Component {
   static navigationOptions = {
@@ -76,50 +77,50 @@ class SignUp extends React.Component {
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.form}>
-          <Text style={styles.label}>Nome</Text>
-          <View style={styles.inputArea}>
+          <Text style={Styles.label}>Nome</Text>
+          <View style={Styles.inputArea}>
             <TextInput
               autoCapitalize="none"
-              style={styles.input}
+              style={Styles.input}
               onChangeText={firstname => this.setState({ firstname })}
               value={this.state.firstname}
               onSubmitEditing={() => this.refs.lastname.focus()}
             />
           </View>
-          <Text style={styles.label}>Sobrenome</Text>
-          <View style={styles.inputArea}>
+          <Text style={Styles.label}>Sobrenome</Text>
+          <View style={Styles.inputArea}>
             <TextInput
               ref="lastname"
               autoCapitalize="none"
-              style={styles.input}
+              style={Styles.input}
               onChangeText={lastname => this.setState({ lastname })}
               value={this.state.lastname}
               onSubmitEditing={() => this.refs.email.focus()}
             />
           </View>
-          <Text style={styles.label}>E-mail</Text>
-          <View style={styles.inputArea}>
+          <Text style={Styles.label}>E-mail</Text>
+          <View style={Styles.inputArea}>
             <TextInput
               ref="email"
               keyboardType="email-address"
               autoCapitalize="none"
-              style={styles.input}
+              style={Styles.input}
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
               onSubmitEditing={() => this.refs.password.focus()}
             />
           </View>
-          <Text style={styles.label}>Senha</Text>
-          <View style={styles.inputArea}>
+          <Text style={Styles.label}>Senha</Text>
+          <View style={Styles.inputArea}>
             <TextInput
               ref="password"
               secureTextEntry={true}
-              style={styles.input}
+              style={Styles.input}
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />
           </View>
-          <View style={styles.row}>
+          <View style={Styles.row}>
             <TouchableOpacity
               color="#000"
               style={{ marginTop: 10 }}
@@ -128,12 +129,12 @@ class SignUp extends React.Component {
               <Text>Voltar</Text>
             </TouchableOpacity>
             <TouchableOpacity
-              style={styles.button}
+              style={Styles.buttonOragen}
               color="#FFF"
               disabled={this.state.loading}
               onPress={this.signup.bind(this)}
             >
-              <Text style={styles.buttonText}>Cadastrar</Text>
+              <Text style={Styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -148,63 +149,12 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: Constants.colors.blue
   },
-  logo: {
-    width: 250,
-    height: 248 / (658 / 250),
-    marginVertical: 40,
-    resizeMode: 'stretch',
-    alignSelf: 'center'
-  },
   form: {
     margin: 20,
     marginTop: 40,
     padding: 20,
     borderRadius: 8,
     backgroundColor: '#FFF'
-  },
-  label: {
-    color: Constants.colors.orange
-  },
-  inputArea: {
-    marginBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: Constants.colors.orange
-  },
-  input: {
-    height: 40
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  button: {
-    borderRadius: 4,
-    padding: 10,
-    paddingHorizontal: 30,
-    backgroundColor: Constants.colors.orange
-  },
-  buttonFB: {
-    backgroundColor: Constants.colors.dark,
-    borderRadius: 5,
-    padding: 10,
-    marginTop: 20
-  },
-  buttonFBArea: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: '#FFF'
-  },
-  buttonTextFB: {
-    textAlign: 'center',
-    color: '#FFF',
-    marginLeft: 10
-  },
-  link: {
-    fontSize: 12
   }
 });
 

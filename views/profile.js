@@ -3,11 +3,16 @@ import { AppRegistry, Button, Text, TextInput, ListView, Alert } from 'react-nat
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
+import Constants from '../contants';
+import Styles from '../styles';
+
 import firebase from '../firebase';
 
 class Profile extends React.Component {
   static navigationOptions = {
     title: 'Perfil',
+    headerTintColor: '#FFF',
+    headerStyle: Styles.headerStyle,
     tabBarIcon: ({ tintColor }) => <Icon name="user" size={20} color={tintColor} />
   };
 

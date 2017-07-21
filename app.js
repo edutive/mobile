@@ -24,6 +24,7 @@ const Home = TabNavigator(
   {
     tabBarOptions: {
       activeTintColor: Constants.colors.orange,
+      inactiveTintColor: Constants.colors.blue,
       labelStyle: {
         fontSize: 14,
         marginBottom: 10

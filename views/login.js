@@ -19,6 +19,7 @@ import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import firebase from '../firebase';
 
 import Constants from '../contants';
+import Styles from '../styles';
 
 class Login extends React.Component {
   static navigationOptions = {
@@ -95,24 +96,24 @@ class Login extends React.Component {
       <ScrollView style={styles.scroll} ref="scroll">
         <View style={styles.container}>
           <View style={styles.form}>
-            <Text style={styles.label}>E-mail</Text>
-            <View style={styles.inputArea}>
+            <Text style={Styles.label}>E-mail</Text>
+            <View style={Styles.inputArea}>
               <TextInput
                 keyboardType="email-address"
                 autoCapitalize="none"
-                style={styles.input}
+                style={Styles.input}
                 onChangeText={email => this.setState({ email })}
                 value={this.state.email}
                 onFocus={() => this.refs.scroll.scrollTo({ x: 0, y: 70, animated: true })}
                 onSubmitEditing={() => this.refs.password.focus()}
               />
             </View>
-            <Text style={styles.label}>Senha</Text>
-            <View style={styles.inputArea}>
+            <Text style={Styles.label}>Senha</Text>
+            <View style={Styles.inputArea}>
               <TextInput
                 ref="password"
                 secureTextEntry={true}
-                style={styles.input}
+                style={Styles.input}
                 onChangeText={password => this.setState({ password })}
                 value={this.state.password}
                 onFocus={() => this.refs.scroll.scrollTo({ x: 0, y: 70, animated: true })}
@@ -120,7 +121,7 @@ class Login extends React.Component {
                 onSubmitEditing={event => this.refs.scroll.scrollTo({ x: 0, y: 0, animated: true })}
               />
             </View>
-            <View style={styles.row}>
+            <View style={Styles.row}>
               <TouchableOpacity
                 color="#000"
                 style={{ marginTop: 10 }}
@@ -129,16 +130,16 @@ class Login extends React.Component {
                 <Text>Cadastre-se</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={styles.button}
+                style={Styles.buttonOragen}
                 color="#FFF"
                 disabled={this.state.loading}
                 onPress={this.login.bind(this)}
               >
-                <Text style={styles.buttonText}>Entrar</Text>
+                <Text style={Styles.buttonText}>Entrar</Text>
               </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.buttonFB} onPress={() => this.facebookLogin()}>
-              <Text style={styles.buttonText}>Entrar com Facebook</Text>
+            <TouchableOpacity style={Styles.buttonDark} onPress={() => this.facebookLogin()}>
+              <Text style={Styles.buttonText}>Entrar com Facebook</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -168,50 +169,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 8,
     backgroundColor: '#FFF'
-  },
-  label: {
-    color: Constants.colors.orange
-  },
-  inputArea: {
-    marginBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: Constants.colors.orange
-  },
-  input: {
-    height: 40
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between'
-  },
-  button: {
-    borderRadius: 4,
-    padding: 10,
-    paddingHorizontal: 30,
-    backgroundColor: Constants.colors.orange
-  },
-  buttonFB: {
-    backgroundColor: Constants.colors.dark,
-    borderRadius: 5,
-    padding: 10,
-    marginTop: 20
-  },
-  buttonFBArea: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: '#FFF'
-  },
-  buttonTextFB: {
-    textAlign: 'center',
-    color: '#FFF',
-    marginLeft: 10
-  },
-  link: {
-    fontSize: 12
   }
 });
 
