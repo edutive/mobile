@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   ScrollView,
   Dimensions,
-  Alert
+  Alert,
+  AsyncStorage
 } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
@@ -36,18 +37,18 @@ class Login extends React.Component {
   }
 
   componentWillMount() {
-    const user = firebase.auth().currentUser;
+    AsyncStorage.getItem('user', (error, user) => {
+      if (!error && user) {
+        global.USER = JSON.parse(user);
 
-    if (user) {
-      global.USER = user._user;
+        const resetAction = NavigationActions.reset({
+          index: 0,
+          actions: [NavigationActions.navigate({ routeName: 'Home' })]
+        });
 
-      const resetAction = NavigationActions.reset({
-        index: 0,
-        actions: [NavigationActions.navigate({ routeName: 'Home' })]
-      });
-
-      this.props.navigation.dispatch(resetAction);
-    }
+        this.props.navigation.dispatch(resetAction);
+      }
+    });
   }
 
   signup() {
@@ -59,12 +60,27 @@ class Login extends React.Component {
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(user => {
-        const resetAction = NavigationActions.reset({
-          index: 0,
-          actions: [NavigationActions.navigate({ routeName: 'Home' })]
-        });
+        firebase.database().ref('users/' + user.uid).once('value', snapshot => {
+          const userObject = {
+            uid: user.uid,
+            firstname: snapshot.val().firstname,
+            lastname: snapshot.val().lastname,
+            email: user.email
+          };
 
-        this.props.navigation.dispatch(resetAction);
+          global.USER = userObject;
+
+          AsyncStorage.setItem('user', JSON.stringify(userObject), error => {
+            if (!error) {
+              const resetAction = NavigationActions.reset({
+                index: 0,
+                actions: [NavigationActions.navigate({ routeName: 'Home' })]
+              });
+
+              this.props.navigation.dispatch(resetAction);
+            }
+          });
+        });
       })
       .catch(error => {
         Alert.alert('Error', 'Não foi possível realizar o login, verifique seu e-mail e senha');

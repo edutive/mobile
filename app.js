@@ -23,6 +23,8 @@ const Home = TabNavigator(
   },
   {
     lazy: true,
+    tabBarPosition: 'bottom',
+    animationEnabled: true,
     tabBarOptions: {
       activeTintColor: Constants.colors.orange,
       inactiveTintColor: Constants.colors.blue,

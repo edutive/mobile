@@ -8,6 +8,9 @@ module.exports = {
     flexDirection: 'row',
     justifyContent: 'space-between'
   },
+  row2: {
+    flexDirection: 'row'
+  },
   label: {
     color: Constants.colors.orange
   },
@@ -55,5 +58,22 @@ module.exports = {
     color: Constants.colors.blue,
     marginLeft: 5,
     marginRight: 10
+  },
+  rowBoxContentTextNoMargin: {
+    fontSize: 16,
+    color: Constants.colors.blue
+  },
+  rowBoxPicture: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    marginRight: 8,
+    backgroundColor: Constants.colors.orange,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  rowBoxPictureLabel: {
+    fontSize: 18,
+    color: '#FFF'
   }
 };
