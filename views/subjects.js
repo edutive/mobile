@@ -55,11 +55,15 @@ class Subjects extends React.Component {
     });
   }
 
+  openSubject(subject) {
+    this.props.navigation.navigate('Subject', subject);
+  }
+
   renderSubject(subject) {
     if (!subject) return null;
 
     return (
-      <TouchableOpacity style={Styles.rowBox}>
+      <TouchableOpacity style={Styles.rowBox} onPress={this.openSubject.bind(this, subject)}>
         <View style={Styles.row}>
           <View>
             <Text style={Styles.rowBoxTitle}>

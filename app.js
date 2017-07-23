@@ -9,17 +9,20 @@ import SignUp from './views/signup';
 
 import Quizes from './views/quizes';
 import Subjects from './views/subjects';
+import Subject from './views/subject';
 import Messages from './views/messages';
+import Message from './views/message';
 import Profile from './views/profile';
+import Trainings from './views/trainings';
 
 global.USER = null;
 
 const Home = TabNavigator(
   {
-    Quizes: { screen: Quizes },
-    Subjects: { screen: Subjects },
-    Messages: { screen: Messages },
-    Profile: { screen: Profile }
+    QuizesTab: { screen: Quizes },
+    SubjectsTab: { screen: Subjects },
+    MessagesTab: { screen: Messages },
+    ProfileTab: { screen: Profile }
   },
   {
     lazy: true,
@@ -51,7 +54,11 @@ const Home = TabNavigator(
 const Edutive = StackNavigator({
   Login: { screen: Login },
   SignUp: { screen: SignUp },
-  Home: { screen: Home }
+  Home: { screen: Home },
+  Subject: { screen: Subject },
+  Quizes: { screen: Quizes },
+  Trainings: { screen: Trainings },
+  Message: { screen: Message }
 });
 
 AppRegistry.registerComponent('edutive', () => Edutive);

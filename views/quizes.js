@@ -8,6 +8,8 @@ import Styles from '../styles';
 
 import firebase from '../firebase';
 
+import NoContent from '../components/noContent';
+
 class Quizes extends React.Component {
   static navigationOptions = {
     title: 'Quizes',
@@ -23,21 +25,34 @@ class Quizes extends React.Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     });
 
+    const subjects = {};
+    if (this.props.navigation.state.params) {
+      subjects[this.props.navigation.state.params.id] = this.props.navigation.state.params;
+    }
+
     this.state = {
-      subjects: {},
+      subject: this.props.navigation.state.params,
+      subjects: subjects,
       quizes: this.listView.cloneWithRows({})
     };
 
     this.ref = null;
-    this.quizes = {};
+    this.quizes = [];
   }
 
   componentWillMount() {
     this.ref = firebase.database().ref('quizes');
-    this.ref
-      .orderByChild('user')
-      .equalTo(global.USER.uid)
-      .on('value', this.handleQuizes.bind(this));
+    if (!this.state.subject) {
+      this.ref
+        .orderByChild('user')
+        .equalTo(global.USER.uid)
+        .on('value', this.handleQuizes.bind(this));
+    } else {
+      this.ref
+        .orderByChild('user')
+        .equalTo(global.USER.uid)
+        .on('value', this.handleQuizes.bind(this));
+    }
   }
 
   componentWillUnmount() {
@@ -47,19 +62,27 @@ class Quizes extends React.Component {
   }
 
   handleQuizes(snapshop) {
-    this.quizes = snapshop.val() || {};
+    const quizes = snapshop.val() || [];
 
-    this.quizes.forEach(quiz => {
+    quizes.forEach(quiz => {
       if (quiz) {
-        if (!this.state.subjects[quiz.subject]) {
-          firebase.database().ref('subjects/' + quiz.subject).once('value', subjectSnap => {
-            const subjects = this.state.subjects;
-            subjects[quiz.subject] = subjectSnap.val();
+        if (!this.state.subject) {
+          this.quizes.push(quiz);
 
-            this.setState({
-              subjects: subjects
+          if (!this.state.subjects[quiz.subject]) {
+            firebase.database().ref('subjects/' + quiz.subject).once('value', subjectSnap => {
+              const subjects = this.state.subjects;
+              subjects[quiz.subject] = subjectSnap.val();
+
+              this.setState({
+                subjects: subjects
+              });
             });
-          });
+          }
+        } else {
+          if (this.state.subject.id === quiz.subject) {
+            this.quizes.push(quiz);
+          }
         }
       }
     });
@@ -71,7 +94,7 @@ class Quizes extends React.Component {
   }
 
   renderQuiz(quiz) {
-    if (!quiz) return null;
+    if (!quiz || (this.state.subject && this.state.subject.id !== quiz.subject)) return null;
 
     return (
       <TouchableOpacity style={Styles.rowBox}>
@@ -101,6 +124,7 @@ class Quizes extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <NoContent title="Nenhum quiz encontrado" visible={this.quizes.length === 0} />
         <ListView
           enableEmptySections={true}
           dataSource={this.state.quizes}

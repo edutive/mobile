@@ -35,7 +35,7 @@ class Messages extends React.Component {
     };
 
     this.ref = null;
-    this.chats = {};
+    this.chats = [];
   }
 
   componentWillMount() {
@@ -59,7 +59,7 @@ class Messages extends React.Component {
   }
 
   handleChats(snapshop) {
-    this.chats = snapshop.val() || {};
+    this.chats = snapshop.val() || [];
 
     this.chats.forEach(chat => {
       if (chat) {
@@ -84,11 +84,18 @@ class Messages extends React.Component {
 
   addMessage() {}
 
-  renderQuiz(chat) {
+  openMessage(chat) {
+    this.props.navigation.navigate('Message', {
+      chat: chat,
+      user: this.state.users[chat.user]
+    });
+  }
+
+  renderMessages(chat) {
     if (!chat) return null;
 
     return (
-      <TouchableOpacity style={Styles.rowBox}>
+      <TouchableOpacity style={Styles.rowBox} onPress={this.openMessage.bind(this, chat)}>
         <View style={Styles.row2}>
           <View style={Styles.rowBoxPicture}>
             <Text style={Styles.rowBoxPictureLabel}>
@@ -122,7 +129,7 @@ class Messages extends React.Component {
         <ListView
           enableEmptySections={true}
           dataSource={this.state.chats}
-          renderRow={this.renderQuiz.bind(this)}
+          renderRow={this.renderMessages.bind(this)}
         />
       </View>
     );

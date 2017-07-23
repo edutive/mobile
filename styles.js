@@ -75,5 +75,36 @@ module.exports = {
   rowBoxPictureLabel: {
     fontSize: 18,
     color: '#FFF'
+  },
+  squareBox: {
+    flex: 0.5,
+    margin: 16,
+    padding: 10,
+    borderRadius: 8,
+    backgroundColor: Constants.colors.yellow
+  },
+  squareBoxTitle: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: Constants.colors.orange
+  },
+  squareBoxRow: {
+    marginTop: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  squareBoxContent: {
+    flexDirection: 'row',
+    alignItems: 'flex-end'
+  },
+  squareBoxContentText: {
+    fontSize: 16,
+    color: Constants.colors.blue,
+    marginLeft: 5,
+    marginRight: 10
+  },
+  squareBoxContentTextNoMargin: {
+    fontSize: 16,
+    color: Constants.colors.blue
   }
 };
