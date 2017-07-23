@@ -8,11 +8,16 @@ import Login from './views/login';
 import SignUp from './views/signup';
 
 import Quizes from './views/quizes';
+import Quiz from './views/quiz';
+import Results from './views/results';
+
 import Subjects from './views/subjects';
 import Subject from './views/subject';
+
 import Messages from './views/messages';
 import Message from './views/message';
 import AddChat from './views/addChat';
+
 import Profile from './views/profile';
 import Trainings from './views/trainings';
 
@@ -58,9 +63,11 @@ const Edutive = StackNavigator({
   Home: { screen: Home },
   Subject: { screen: Subject },
   Quizes: { screen: Quizes },
+  Quiz: { screen: Quiz },
   Trainings: { screen: Trainings },
   Message: { screen: Message },
-  AddChat: { screen: AddChat }
+  AddChat: { screen: AddChat },
+  Results: { screen: Results }
 });
 
 AppRegistry.registerComponent('edutive', () => Edutive);

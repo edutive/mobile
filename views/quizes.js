@@ -93,11 +93,18 @@ class Quizes extends React.Component {
     });
   }
 
+  openQuiz(quiz) {
+    this.props.navigation.navigate('Quiz', {
+      quiz: quiz,
+      subject: this.state.subjects[quiz.subject]
+    });
+  }
+
   renderQuiz(quiz) {
     if (!quiz || (this.state.subject && this.state.subject.id !== quiz.subject)) return null;
 
     return (
-      <TouchableOpacity style={Styles.rowBox}>
+      <TouchableOpacity style={Styles.rowBox} onPress={this.openQuiz.bind(this, quiz)}>
         <View style={Styles.row}>
           <View>
             <Text style={Styles.rowBoxTitle}>

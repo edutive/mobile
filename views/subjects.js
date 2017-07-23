@@ -8,6 +8,8 @@ import Styles from '../styles';
 
 import firebase from '../firebase';
 
+import IconBox from '../components/iconBox';
+
 class Subjects extends React.Component {
   static navigationOptions = {
     title: 'Disciplinas',
@@ -62,25 +64,19 @@ class Subjects extends React.Component {
   renderSubject(subject) {
     if (!subject) return null;
 
+    const icons = [
+      { name: 'people', value: '0' },
+      { name: 'question', value: '0' },
+      { name: 'envelope-open', value: '0' }
+    ];
+
     return (
-      <TouchableOpacity style={Styles.rowBox} onPress={this.openSubject.bind(this, subject)}>
-        <View style={Styles.row}>
-          <View>
-            <Text style={Styles.rowBoxTitle}>
-              {subject.name}
-            </Text>
-            <View style={Styles.rowBoxContent}>
-              <Icon name="people" size={18} color={Constants.colors.blue} />
-              <Text style={Styles.rowBoxContentText}>0</Text>
-              <Icon name="question" size={18} color={Constants.colors.blue} />
-              <Text style={Styles.rowBoxContentText}>0</Text>
-              <Icon name="envelope-open" size={18} color={Constants.colors.blue} />
-              <Text style={Styles.rowBoxContentText}>0</Text>
-            </View>
-          </View>
-          <Icon name={subject.icon} size={40} color={Constants.colors.orangeIcon} />
-        </View>
-      </TouchableOpacity>
+      <IconBox
+        title={subject.name}
+        onPress={this.openSubject.bind(this, subject)}
+        subjectIcon={subject.icon}
+        icons={icons}
+      />
     );
   }
 

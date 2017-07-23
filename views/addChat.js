@@ -120,7 +120,7 @@ class AddChat extends React.Component {
         this.props.navigation.navigate('Message', {
           chat: snapshop.val()
             ? snapshop.val()[Object.keys(snapshop.val())[0]]
-            : { chat: newChatKey },
+            : { chat: newChatKey, user: key },
           user: user
         });
       });

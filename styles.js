@@ -106,5 +106,17 @@ module.exports = {
   squareBoxContentTextNoMargin: {
     fontSize: 16,
     color: Constants.colors.blue
+  },
+  buttonIcon: {
+    borderRadius: 4,
+    padding: 8,
+    backgroundColor: Constants.colors.orange,
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  buttonIconText: {
+    color: '#FFF',
+    marginLeft: 8,
+    fontWeight: 'bold'
   }
 };
