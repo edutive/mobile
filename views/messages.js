@@ -5,8 +5,11 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import Constants from '../contants';
 import Styles from '../styles';
+import UserBox from '../components/userBox';
 
 import firebase from '../firebase';
+
+import NoContent from '../components/noContent';
 
 class Messages extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -35,7 +38,7 @@ class Messages extends React.Component {
     };
 
     this.ref = null;
-    this.chats = [];
+    this.chats = {};
   }
 
   componentWillMount() {
@@ -59,9 +62,11 @@ class Messages extends React.Component {
   }
 
   handleChats(snapshop) {
-    this.chats = snapshop.val() || [];
+    this.chats = snapshop.val() || {};
 
-    this.chats.forEach(chat => {
+    Object.keys(this.chats).forEach(key => {
+      const chat = this.chats[key];
+
       if (chat) {
         if (!this.state.users[chat.user]) {
           firebase.database().ref('users/' + chat.user).once('value', userSnap => {
@@ -82,50 +87,39 @@ class Messages extends React.Component {
     });
   }
 
-  addMessage() {}
+  addMessage() {
+    this.props.navigation.navigate('AddChat');
+  }
 
   openMessage(chat) {
-    this.props.navigation.navigate('Message', {
-      chat: chat,
-      user: this.state.users[chat.user]
-    });
+    if (this.state.users[chat.user]) {
+      this.props.navigation.navigate('Message', {
+        chat: chat,
+        user: this.state.users[chat.user]
+      });
+    }
   }
 
   renderMessages(chat) {
     if (!chat) return null;
 
     return (
-      <TouchableOpacity style={Styles.rowBox} onPress={this.openMessage.bind(this, chat)}>
-        <View style={Styles.row2}>
-          <View style={Styles.rowBoxPicture}>
-            <Text style={Styles.rowBoxPictureLabel}>
-              {this.state.users[chat.user]
-                ? this.state.users[chat.user].firstname.substr(0, 1).toUpperCase() +
-                  this.state.users[chat.user].lastname.substr(0, 1).toUpperCase()
-                : '-'}
-            </Text>
-          </View>
-          <View>
-            <Text style={Styles.rowBoxTitle}>
-              {this.state.users[chat.user]
-                ? `${this.state.users[chat.user].firstname} ${this.state.users[chat.user].lastname}`
-                : '-'}
-            </Text>
-            <View style={Styles.rowBoxContent}>
-              <Icon name="speech" size={18} color={Constants.colors.blue} />
-              <Text style={Styles.rowBoxContentText}>
-                {chat.lastMessage}
-              </Text>
-            </View>
-          </View>
-        </View>
-      </TouchableOpacity>
+      <UserBox
+        user={this.state.users[chat.user]}
+        description={chat.lastMessage}
+        descriptionIcon="speech"
+        onPress={this.openMessage.bind(this, chat)}
+      />
     );
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <NoContent
+          title="Nenhuma mensagem encontrada"
+          visible={Object.keys(this.chats).length === 0}
+        />
         <ListView
           enableEmptySections={true}
           dataSource={this.state.chats}

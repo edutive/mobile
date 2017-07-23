@@ -57,7 +57,7 @@ class Message extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = firebase.database().ref('messages/' + this.state.chat.id);
+    this.ref = firebase.database().ref('messages/' + this.state.chat.chat);
     this.ref.on('value', this.handleMessages.bind(this));
 
     Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
@@ -65,8 +65,8 @@ class Message extends React.Component {
   }
 
   componentWillUnmount() {
-    Keyboard.removeAllListeners('keyboardWillShow');
-    Keyboard.removeAllListeners('keyboardWillHide');
+    Keyboard.removeListener('keyboardWillShow');
+    Keyboard.removeListener('keyboardWillHide');
 
     if (this.ref) {
       this.ref.off('value', this.handleMessages.bind(this));
@@ -101,11 +101,21 @@ class Message extends React.Component {
   }
 
   sendMessage() {
-    firebase.database().ref('messages/' + this.state.chat.id + '/' + new Date().getTime()).set({
+    firebase.database().ref('messages/' + this.state.chat.chat + '/' + new Date().getTime()).set({
       date: new Date().getTime(),
       sender: global.USER.uid,
       text: this.state.message
     });
+
+    firebase
+      .database()
+      .ref('chats/' + global.USER.uid + '/' + this.state.chat.chat + '/lastMessage')
+      .set(this.state.message);
+
+    firebase
+      .database()
+      .ref('chats/' + this.state.chat.user + '/' + this.state.chat.chat + '/lastMessage')
+      .set(this.state.message);
 
     this.setState({
       message: ''
@@ -116,8 +126,6 @@ class Message extends React.Component {
     if (!message) return null;
 
     const date = moment.unix(message.date / 1000).fromNow();
-
-    console.log('message', message.text + ' - ' + new Date(message.date));
 
     return (
       <View

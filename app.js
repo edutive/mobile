@@ -12,6 +12,7 @@ import Subjects from './views/subjects';
 import Subject from './views/subject';
 import Messages from './views/messages';
 import Message from './views/message';
+import AddChat from './views/addChat';
 import Profile from './views/profile';
 import Trainings from './views/trainings';
 
@@ -58,7 +59,8 @@ const Edutive = StackNavigator({
   Subject: { screen: Subject },
   Quizes: { screen: Quizes },
   Trainings: { screen: Trainings },
-  Message: { screen: Message }
+  Message: { screen: Message },
+  AddChat: { screen: AddChat }
 });
 
 AppRegistry.registerComponent('edutive', () => Edutive);
