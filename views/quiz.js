@@ -49,7 +49,8 @@ class Quiz extends React.Component {
       questions: {},
       currentQuestion: 0,
       minutes: '00',
-      seconds: '00'
+      seconds: '00',
+      doubt: false
     };
 
     this.ref = null;
@@ -111,16 +112,33 @@ class Quiz extends React.Component {
   }
 
   nextQuestion(answer) {
-    this.answers.push(answer);
+    this.answers.push({
+      question: Object.keys(this.state.questions)[this.state.currentQuestion],
+      answer: answer,
+      correct:
+        answer ===
+        this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]]
+          .correctOption,
+      doubt: this.state.doubt
+    });
 
     if (this.state.currentQuestion < Object.keys(this.state.questions).length - 1) {
       this.setState({
+        doubt: false,
         currentQuestion: ++this.state.currentQuestion
       });
 
       this.getQuestion();
     } else {
-      this.props.navigation.navigate('Results', this.answers);
+      firebase
+        .database()
+        .ref('results/' + global.USER.uid + '/' + this.state.quiz.id)
+        .set(this.answers);
+
+      this.props.navigation.navigate('Results', {
+        quiz: this.state.quiz,
+        answers: this.answers
+      });
     }
   }
 
@@ -157,8 +175,11 @@ class Quiz extends React.Component {
             <Icon color="#FFF" size={20} name="logout" />
             <Text style={Styles.buttonIconText}>Abandonar</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={Styles.buttonIcon}>
-            <Icon color="#FFF" size={20} name="flag" />
+          <TouchableOpacity
+            style={Styles.buttonIcon}
+            onPress={() => this.setState({ doubt: !this.state.doubt })}
+          >
+            <Icon color="#FFF" size={20} name={this.state.doubt ? 'check' : 'flag'} />
             <Text style={Styles.buttonIconText}>Marcar como dúvida</Text>
           </TouchableOpacity>
         </View>
