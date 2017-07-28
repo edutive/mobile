@@ -33,6 +33,8 @@ bower_components
 build/Release
 android/app/build/
 android/build/
+build/
+/*/build/
 
 # Dependency directories
 node_modules/

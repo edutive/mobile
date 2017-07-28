@@ -60,10 +60,8 @@ class Quiz extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = firebase
-      .database()
-      .ref('quizesQuestions/' + this.state.quiz.id)
-      .on('value', this.handleQuestions.bind(this));
+    this.ref = firebase.database().ref('quizesQuestions/' + this.state.quiz.id);
+    this.ref.on('value', this.handleQuestions.bind(this));
   }
 
   componentWillUnmount() {
@@ -90,7 +88,9 @@ class Quiz extends React.Component {
   getQuestion() {
     firebase
       .database()
-      .ref('questions/' + Object.keys(this.questions)[this.state.currentQuestion])
+      .ref(
+        'questions/' + Object.keys(this.questions)[this.state.currentQuestion]
+      )
       .once('value', questionSnapshop => {
         this.questions[
           Object.keys(this.questions)[this.state.currentQuestion]
@@ -117,12 +117,16 @@ class Quiz extends React.Component {
       answer: answer,
       correct:
         answer ===
-        this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]]
-          .correctOption,
+        this.state.questions[
+          Object.keys(this.state.questions)[this.state.currentQuestion]
+        ].correctOption,
       doubt: this.state.doubt
     });
 
-    if (this.state.currentQuestion < Object.keys(this.state.questions).length - 1) {
+    if (
+      this.state.currentQuestion <
+      Object.keys(this.state.questions).length - 1
+    ) {
       this.setState({
         doubt: false,
         currentQuestion: ++this.state.currentQuestion
@@ -157,9 +161,15 @@ class Quiz extends React.Component {
       this.state.questions &&
       Object.keys(this.state.questions) &&
       Object.keys(this.state.questions)[this.state.currentQuestion] &&
-      this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]] &&
-      this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].title
-        ? this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]]
+      this.state.questions[
+        Object.keys(this.state.questions)[this.state.currentQuestion]
+      ] &&
+      this.state.questions[
+        Object.keys(this.state.questions)[this.state.currentQuestion]
+      ].title
+        ? this.state.questions[
+            Object.keys(this.state.questions)[this.state.currentQuestion]
+          ]
         : false;
 
     return (
@@ -179,7 +189,11 @@ class Quiz extends React.Component {
             style={Styles.buttonIcon}
             onPress={() => this.setState({ doubt: !this.state.doubt })}
           >
-            <Icon color="#FFF" size={20} name={this.state.doubt ? 'check' : 'flag'} />
+            <Icon
+              color="#FFF"
+              size={20}
+              name={this.state.doubt ? 'check' : 'flag'}
+            />
             <Text style={Styles.buttonIconText}>Marcar como dúvida</Text>
           </TouchableOpacity>
         </View>
@@ -209,7 +223,11 @@ class Quiz extends React.Component {
             {question && question.options.c
               ? <View style={styles.optionsRow}>
                   <TouchableOpacity
-                    style={[Styles.buttonOragen, styles.option, { marginRight: 4 }]}
+                    style={[
+                      Styles.buttonOragen,
+                      styles.option,
+                      { marginRight: 4 }
+                    ]}
                     onPress={this.nextQuestion.bind(this, 'c')}
                   >
                     <Text style={Styles.buttonText}>
@@ -217,7 +235,11 @@ class Quiz extends React.Component {
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity
-                    style={[Styles.buttonOragen, styles.option, { marginLeft: 4 }]}
+                    style={[
+                      Styles.buttonOragen,
+                      styles.option,
+                      { marginLeft: 4 }
+                    ]}
                     onPress={this.nextQuestion.bind(this, 'd')}
                   >
                     <Text style={Styles.buttonText}>

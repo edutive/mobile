@@ -79,6 +79,7 @@ module.exports = {
   squareBox: {
     flex: 0.5,
     margin: 16,
+    marginBottom: 0,
     padding: 10,
     borderRadius: 8,
     backgroundColor: Constants.colors.yellow
@@ -118,5 +119,20 @@ module.exports = {
     color: '#FFF',
     marginLeft: 8,
     fontWeight: 'bold'
+  },
+  buttonCircle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: Constants.colors.orange,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 0
+    },
+    shadowRadius: 5,
+    shadowOpacity: 0.3
   }
 };

@@ -21,6 +21,11 @@ import AddChat from './views/addChat';
 import Profile from './views/profile';
 import Trainings from './views/trainings';
 
+import Forum from './views/forum';
+import ForumCategory from './views/forumCategory';
+import ForumTopic from './views/forumTopic';
+import AddTopic from './views/addTopic';
+
 global.USER = null;
 
 const Home = TabNavigator(
@@ -67,7 +72,11 @@ const Edutive = StackNavigator({
   Trainings: { screen: Trainings },
   Message: { screen: Message },
   AddChat: { screen: AddChat },
-  Results: { screen: Results }
+  Results: { screen: Results },
+  Forum: { screen: Forum },
+  ForumCategory: { screen: ForumCategory },
+  ForumTopic: { screen: ForumTopic },
+  AddTopic: { screen: AddTopic }
 });
 
 AppRegistry.registerComponent('edutive', () => Edutive);
