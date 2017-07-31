@@ -7,6 +7,7 @@ import {
   ListView,
   Alert,
   View,
+  Image,
   StyleSheet,
   AsyncStorage
 } from 'react-native';
@@ -18,12 +19,15 @@ import Styles from '../styles';
 
 import firebase from '../firebase';
 
+import UserPicture from '../components/userPicture';
+
 class Profile extends React.Component {
   static navigationOptions = {
     title: 'Perfil',
     headerTintColor: '#FFF',
     headerStyle: Styles.headerStyle,
-    tabBarIcon: ({ tintColor }) => <Icon name="user" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) =>
+      <Icon name="user" size={20} color={tintColor} />
   };
 
   constructor(props) {
@@ -53,12 +57,11 @@ class Profile extends React.Component {
   render() {
     return (
       <View style={styles.header}>
-        <View style={styles.picture}>
-          <Text style={styles.pictureLabel}>
-            {global.USER.firstname.substr(0, 1).toUpperCase()}
-            {global.USER.lastname.substr(0, 1).toUpperCase()}
-          </Text>
-        </View>
+        <UserPicture
+          picture={global.USER.picture}
+          firstname={global.USER.firstname}
+          lastname={global.USER.lastname}
+        />
         <Text style={styles.title}>
           {`${global.USER.firstname} ${global.USER.lastname}`}
         </Text>
@@ -80,20 +83,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Constants.colors.blue
-  },
-  picture: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Constants.colors.orange
-  },
-  pictureLabel: {
-    fontSize: 30,
-    color: '#FFF'
   },
   title: {
     fontSize: 22,

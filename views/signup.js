@@ -22,6 +22,8 @@ import firebase from '../firebase';
 import Constants from '../contants';
 import Styles from '../styles';
 
+import UserPicture from '../components/userPicture';
+
 class SignUp extends React.Component {
   static navigationOptions = {
     header: null
@@ -55,15 +57,6 @@ class SignUp extends React.Component {
           .auth()
           .createUserWithEmailAndPassword(this.state.email, this.state.password)
           .then(user => {
-            global.USER = {
-              uid: user.uid,
-              email: this.state.email,
-              firstname: this.state.firstname,
-              lastname: this.state.lastname
-            };
-
-            firebase.database().ref('users').child(user.uid).set(global.USER);
-
             if (this.state.photo) {
               firebase
                 .storage()
@@ -72,25 +65,14 @@ class SignUp extends React.Component {
                   contentType: 'image/jpeg'
                 })
                 .then(uploadedFile => {
-                  AsyncStorage.setItem(
-                    'user',
-                    JSON.stringify(global.USER),
-                    error => {
-                      const resetAction = NavigationActions.reset({
-                        index: 0,
-                        actions: [
-                          NavigationActions.navigate({ routeName: 'Home' })
-                        ]
-                      });
-
-                      this.props.navigation.dispatch(resetAction);
-                    }
-                  );
+                  this.registerCallback(user, uploadedFile.downloadUrl);
                 })
                 .catch(err => {
                   console.log('Upload Error', err);
                   Alert.alert('Imagem', 'Não foi possível enviar sua imagem.');
                 });
+            } else {
+              this.registerCallback(user, undefined);
             }
           })
           .catch(error => {
@@ -108,6 +90,27 @@ class SignUp extends React.Component {
     } else {
       Alert.alert('Campos Obrigatórios', 'Por favor, preencha todos os campos');
     }
+  }
+
+  registerCallback(user, pictureUrl) {
+    global.USER = {
+      uid: user.uid,
+      email: this.state.email,
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      picture: pictureUrl
+    };
+
+    firebase.database().ref('users').child(user.uid).set(global.USER);
+
+    AsyncStorage.setItem('user', JSON.stringify(global.USER), error => {
+      const resetAction = NavigationActions.reset({
+        index: 0,
+        actions: [NavigationActions.navigate({ routeName: 'Home' })]
+      });
+
+      this.props.navigation.dispatch(resetAction);
+    });
   }
 
   choosePhoto() {
@@ -133,11 +136,6 @@ class SignUp extends React.Component {
         } else {
           let source = { uri: response.uri };
 
-          console.log(source);
-
-          // You can also display the image using data:
-          // let source = { uri: 'data:image/jpeg;base64,' + response.data };
-
           this.setState({
             photo: source
           });
@@ -153,21 +151,11 @@ class SignUp extends React.Component {
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.form}>
           <View style={[Styles.row, { marginBottom: 20 }]}>
-            <View style={styles.picture}>
-              {this.state.photo
-                ? <Image
-                    source={this.state.photo}
-                    style={styles.pictureImage}
-                  />
-                : <Text style={styles.pictureLabel}>
-                    {this.state.firstname.length > 0
-                      ? this.state.firstname.substr(0, 1).toUpperCase()
-                      : '-'}
-                    {this.state.lastname.length > 0
-                      ? this.state.lastname.substr(0, 1).toUpperCase()
-                      : '-'}
-                  </Text>}
-            </View>
+            <UserPicture
+              picture={this.state.photo}
+              firstname={this.state.firstname}
+              lastname={this.state.lastname}
+            />
             <TouchableOpacity
               onPress={this.choosePhoto.bind(this)}
               style={[Styles.buttonOragen, { alignSelf: 'center' }]}
@@ -253,26 +241,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 8,
     backgroundColor: '#FFF'
-  },
-  picture: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    borderWidth: 2,
-    borderColor: '#FFF',
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Constants.colors.orange
-  },
-  pictureLabel: {
-    fontSize: 30,
-    color: '#FFF'
-  },
-  pictureImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 50
   }
 });
 
