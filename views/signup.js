@@ -8,11 +8,15 @@ import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
-  Alert
+  Alert,
+  Image,
+  AsyncStorage
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import ImagePicker from 'react-native-image-picker';
+
 import firebase from '../firebase';
 
 import Constants from '../contants';
@@ -30,7 +34,8 @@ class SignUp extends React.Component {
       firstname: '',
       lastname: '',
       email: '',
-      password: ''
+      password: '',
+      photo: null
     };
   }
 
@@ -39,27 +44,61 @@ class SignUp extends React.Component {
   }
 
   signup() {
-    if (this.state.firstname && this.state.lastname && this.state.email && this.state.password) {
+    if (
+      this.state.firstname &&
+      this.state.lastname &&
+      this.state.email &&
+      this.state.password
+    ) {
       if (this.state.password.length >= 6) {
         firebase
           .auth()
           .createUserWithEmailAndPassword(this.state.email, this.state.password)
           .then(user => {
-            firebase.database().ref('users').child(user.uid).set({
+            global.USER = {
+              uid: user.uid,
+              email: this.state.email,
               firstname: this.state.firstname,
               lastname: this.state.lastname
-            });
+            };
 
-            const resetAction = NavigationActions.reset({
-              index: 0,
-              actions: [NavigationActions.navigate({ routeName: 'Home' })]
-            });
+            firebase.database().ref('users').child(user.uid).set(global.USER);
 
-            this.props.navigation.dispatch(resetAction);
+            if (this.state.photo) {
+              firebase
+                .storage()
+                .ref('/files/' + user.uid)
+                .putFile(this.state.photo.uri, {
+                  contentType: 'image/jpeg'
+                })
+                .then(uploadedFile => {
+                  AsyncStorage.setItem(
+                    'user',
+                    JSON.stringify(global.USER),
+                    error => {
+                      const resetAction = NavigationActions.reset({
+                        index: 0,
+                        actions: [
+                          NavigationActions.navigate({ routeName: 'Home' })
+                        ]
+                      });
+
+                      this.props.navigation.dispatch(resetAction);
+                    }
+                  );
+                })
+                .catch(err => {
+                  console.log('Upload Error', err);
+                  Alert.alert('Imagem', 'Não foi possível enviar sua imagem.');
+                });
+            }
           })
           .catch(error => {
             if (error.userInfo.error_name === 'ERROR_EMAIL_ALREADY_IN_USE') {
-              Alert.alert('E-mail', 'Esse e-mail já foi utilizado por outro usuário');
+              Alert.alert(
+                'E-mail',
+                'Esse e-mail já foi utilizado por outro usuário'
+              );
             }
             console.log(error.userInfo);
           });
@@ -71,12 +110,71 @@ class SignUp extends React.Component {
     }
   }
 
+  choosePhoto() {
+    ImagePicker.showImagePicker(
+      {
+        title: 'Selecionar Foto',
+        maxWidth: 200,
+        maxHeight: 200,
+        cameraType: 'front',
+        mediaType: 'photo',
+        storageOptions: {
+          skipBackup: true,
+          path: 'images'
+        }
+      },
+      response => {
+        if (response.didCancel) {
+          console.log('User cancelled image picker');
+        } else if (response.error) {
+          console.log('ImagePicker Error: ', response.error);
+        } else if (response.customButton) {
+          console.log('User tapped custom button: ', response.customButton);
+        } else {
+          let source = { uri: response.uri };
+
+          console.log(source);
+
+          // You can also display the image using data:
+          // let source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+          this.setState({
+            photo: source
+          });
+        }
+      }
+    );
+  }
+
   render() {
     const { navigate } = this.props.navigation;
 
     return (
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.form}>
+          <View style={[Styles.row, { marginBottom: 20 }]}>
+            <View style={styles.picture}>
+              {this.state.photo
+                ? <Image
+                    source={this.state.photo}
+                    style={styles.pictureImage}
+                  />
+                : <Text style={styles.pictureLabel}>
+                    {this.state.firstname.length > 0
+                      ? this.state.firstname.substr(0, 1).toUpperCase()
+                      : '-'}
+                    {this.state.lastname.length > 0
+                      ? this.state.lastname.substr(0, 1).toUpperCase()
+                      : '-'}
+                  </Text>}
+            </View>
+            <TouchableOpacity
+              onPress={this.choosePhoto.bind(this)}
+              style={[Styles.buttonOragen, { alignSelf: 'center' }]}
+            >
+              <Text style={Styles.buttonText}>Selecionar Foto</Text>
+            </TouchableOpacity>
+          </View>
           <Text style={Styles.label}>Nome</Text>
           <View style={Styles.inputArea}>
             <TextInput
@@ -155,6 +253,26 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 8,
     backgroundColor: '#FFF'
+  },
+  picture: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    borderWidth: 2,
+    borderColor: '#FFF',
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Constants.colors.orange
+  },
+  pictureLabel: {
+    fontSize: 30,
+    color: '#FFF'
+  },
+  pictureImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50
   }
 });
 

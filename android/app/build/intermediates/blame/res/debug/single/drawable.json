@@ -9,15 +9,15 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_favicon_blue.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_favicon_blue.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_favicon_blue.xml"
+    },
+    {
+        "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_like_background.xml",
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_like_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
         "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/drawable/abc_ic_search_api_material.xml"
-    },
-    {
-        "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_like_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_like_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_edit_text_material.xml",
@@ -45,15 +45,15 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/messenger_button_blue_bg_round.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/messenger_button_blue_bg_round.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/messenger_button_blue_bg_round.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_login_logo.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_login_logo.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_login_logo.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_login_silver_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_login_silver_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_login_silver_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_ic_ab_back_material.xml",
@@ -89,7 +89,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_icon.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_icon.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_icon.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
@@ -97,11 +97,11 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_send_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_send_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_send_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_login_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_login_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_login_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
@@ -129,7 +129,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_auth_dialog_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_auth_dialog_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_auth_dialog_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
@@ -137,7 +137,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/messenger_button_white_bg_round.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/messenger_button_white_bg_round.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/messenger_button_white_bg_round.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_ic_clear_material.xml",
@@ -173,7 +173,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_button_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_button_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_button_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
@@ -193,7 +193,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/messenger_button_white_bg_selector.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/messenger_button_white_bg_selector.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/messenger_button_white_bg_selector.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
@@ -221,15 +221,15 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/messenger_button_blue_bg_selector.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/messenger_button_blue_bg_selector.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/messenger_button_blue_bg_selector.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_auth_dialog_cancel_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_auth_dialog_cancel_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_auth_dialog_cancel_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_auth_dialog_header_background.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_auth_dialog_header_background.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_auth_dialog_header_background.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
@@ -241,7 +241,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/com_facebook_send_button_icon.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/drawable/com_facebook_send_button_icon.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/drawable/com_facebook_send_button_icon.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",

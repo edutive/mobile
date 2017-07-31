@@ -4,12 +4,12 @@
         "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/layout/abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/layout/abc_dialog_title_material.xml"
-    },
-    {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
         "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/res/layout/abc_dialog_title_material.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
@@ -37,7 +37,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/com_facebook_device_auth_dialog_fragment.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/com_facebook_device_auth_dialog_fragment.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/com_facebook_device_auth_dialog_fragment.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
@@ -65,7 +65,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/fps_view.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/layout/fps_view.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/layout/fps_view.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
@@ -81,11 +81,11 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_large.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/messenger_button_send_blue_large.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/messenger_button_send_blue_large.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_small.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/messenger_button_send_blue_small.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/messenger_button_send_blue_small.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
@@ -97,7 +97,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/messenger_button_send_white_small.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/messenger_button_send_white_small.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/messenger_button_send_white_small.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
@@ -109,7 +109,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/dev_loading_view.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/layout/dev_loading_view.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/layout/dev_loading_view.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
@@ -125,35 +125,35 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/com_facebook_tooltip_bubble.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/com_facebook_tooltip_bubble.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/com_facebook_tooltip_bubble.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/messenger_button_send_white_large.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/messenger_button_send_white_large.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/messenger_button_send_white_large.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/redbox_item_title.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/layout/redbox_item_title.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/layout/redbox_item_title.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/com_facebook_activity_layout.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/com_facebook_activity_layout.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/com_facebook_activity_layout.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/messenger_button_send_white_round.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/messenger_button_send_white_round.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/messenger_button_send_white_round.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/messenger_button_send_blue_round.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/messenger_button_send_blue_round.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/messenger_button_send_blue_round.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/com_facebook_smart_device_dialog_fragment.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/com_facebook_smart_device_dialog_fragment.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/com_facebook_smart_device_dialog_fragment.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/redbox_view.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/layout/redbox_view.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/layout/redbox_view.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
@@ -209,7 +209,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/com_facebook_login_fragment.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.23.0/res/layout/com_facebook_login_fragment.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/res/layout/com_facebook_login_fragment.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
@@ -217,6 +217,6 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/layout/redbox_item_frame.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/layout/redbox_item_frame.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/layout/redbox_item_frame.xml"
     }
 ]

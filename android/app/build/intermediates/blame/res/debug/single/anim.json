@@ -13,7 +13,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_in.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/anim/catalyst_push_up_in.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/anim/catalyst_push_up_in.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
@@ -25,7 +25,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/fade_out.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/anim/fade_out.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/anim/fade_out.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
@@ -37,7 +37,7 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/fade_in.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/anim/fade_in.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/anim/fade_in.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
@@ -53,14 +53,14 @@
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/slide_down.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/anim/slide_down.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/anim/slide_down.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/slide_up.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/anim/slide_up.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/anim/slide_up.xml"
     },
     {
         "merged": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
-        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.45.1/res/anim/catalyst_push_up_out.xml"
+        "source": "/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/res/anim/catalyst_push_up_out.xml"
     }
 ]
