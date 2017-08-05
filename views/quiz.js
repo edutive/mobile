@@ -86,47 +86,33 @@ class Quiz extends React.Component {
   }
 
   getQuestion() {
-    firebase
-      .database()
-      .ref(
-        'questions/' + Object.keys(this.questions)[this.state.currentQuestion]
-      )
-      .once('value', questionSnapshop => {
-        this.questions[
-          Object.keys(this.questions)[this.state.currentQuestion]
-        ] = questionSnapshop.val();
+    firebase.database().ref('questions/' + Object.keys(this.questions)[this.state.currentQuestion]).once('value', questionSnapshop => {
+      this.questions[Object.keys(this.questions)[this.state.currentQuestion]] = questionSnapshop.val();
 
-        if (!this.interval) {
-          this.interval = setInterval(() => {
-            this.setState({
-              minutes: pad(parseInt(sec / 60, 10)),
-              seconds: pad(++sec % 60)
-            });
-          }, 1000);
-        }
+      if (!this.interval) {
+        this.interval = setInterval(() => {
+          this.setState({
+            minutes: pad(parseInt(sec / 60, 10)),
+            seconds: pad(++sec % 60)
+          });
+        }, 1000);
+      }
 
-        this.setState({
-          questions: this.questions
-        });
+      this.setState({
+        questions: this.questions
       });
+    });
   }
 
   nextQuestion(answer) {
     this.answers.push({
       question: Object.keys(this.state.questions)[this.state.currentQuestion],
       answer: answer,
-      correct:
-        answer ===
-        this.state.questions[
-          Object.keys(this.state.questions)[this.state.currentQuestion]
-        ].correctOption,
+      correct: answer === this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].correctOption,
       doubt: this.state.doubt
     });
 
-    if (
-      this.state.currentQuestion <
-      Object.keys(this.state.questions).length - 1
-    ) {
+    if (this.state.currentQuestion < Object.keys(this.state.questions).length - 1) {
       this.setState({
         doubt: false,
         currentQuestion: ++this.state.currentQuestion
@@ -134,10 +120,7 @@ class Quiz extends React.Component {
 
       this.getQuestion();
     } else {
-      firebase
-        .database()
-        .ref('results/' + global.USER.uid + '/' + this.state.quiz.id)
-        .set(this.answers);
+      firebase.database().ref('results/' + global.USER.uid + '/' + this.state.quiz.id).set(this.answers);
 
       this.props.navigation.navigate('Results', {
         quiz: this.state.quiz,
@@ -146,13 +129,15 @@ class Quiz extends React.Component {
     }
   }
 
+  goBack() {
+    this.props.navigation.goBack();
+  }
+
   render() {
     const icons = [
       {
         name: 'question',
-        value: `${this.state.currentQuestion + 1}/${this.state.questions
-          ? Object.keys(this.state.questions).length
-          : 0}`
+        value: `${this.state.currentQuestion + 1}/${this.state.questions ? Object.keys(this.state.questions).length : 0}`
       },
       { name: 'clock', value: `${this.state.minutes}:${this.state.seconds}` }
     ];
@@ -161,39 +146,21 @@ class Quiz extends React.Component {
       this.state.questions &&
       Object.keys(this.state.questions) &&
       Object.keys(this.state.questions)[this.state.currentQuestion] &&
-      this.state.questions[
-        Object.keys(this.state.questions)[this.state.currentQuestion]
-      ] &&
-      this.state.questions[
-        Object.keys(this.state.questions)[this.state.currentQuestion]
-      ].title
-        ? this.state.questions[
-            Object.keys(this.state.questions)[this.state.currentQuestion]
-          ]
+      this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]] &&
+      this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].title
+        ? this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]]
         : false;
 
     return (
       <View style={styles.container}>
-        <IconBox
-          title={this.state.quiz.name}
-          onPress={() => {}}
-          subjectIcon={this.state.subject.icon}
-          icons={icons}
-        />
+        <IconBox title={this.state.quiz.name} onPress={() => {}} subjectIcon={this.state.subject.icon} icons={icons} />
         <View style={styles.iconRow}>
-          <TouchableOpacity style={[Styles.buttonIcon, { marginRight: 16 }]}>
+          <TouchableOpacity style={[Styles.buttonIcon, { marginRight: 16 }]} onPress={this.goBack.bind(this)}>
             <Icon color="#FFF" size={20} name="logout" />
             <Text style={Styles.buttonIconText}>Abandonar</Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={Styles.buttonIcon}
-            onPress={() => this.setState({ doubt: !this.state.doubt })}
-          >
-            <Icon
-              color="#FFF"
-              size={20}
-              name={this.state.doubt ? 'check' : 'flag'}
-            />
+          <TouchableOpacity style={Styles.buttonIcon} onPress={() => this.setState({ doubt: !this.state.doubt })}>
+            <Icon color="#FFF" size={20} name={this.state.doubt ? 'check' : 'flag'} />
             <Text style={Styles.buttonIconText}>Marcar como dúvida</Text>
           </TouchableOpacity>
         </View>
@@ -203,18 +170,12 @@ class Quiz extends React.Component {
           </Text>
           <View style={styles.options}>
             <View style={styles.optionsRow}>
-              <TouchableOpacity
-                style={[Styles.buttonOragen, styles.option, { marginRight: 4 }]}
-                onPress={this.nextQuestion.bind(this, 'a')}
-              >
+              <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginRight: 4 }]} onPress={this.nextQuestion.bind(this, 'a')}>
                 <Text style={Styles.buttonText}>
                   {question ? question.options.a : '-'}
                 </Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={[Styles.buttonOragen, styles.option, { marginLeft: 4 }]}
-                onPress={this.nextQuestion.bind(this, 'b')}
-              >
+              <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginLeft: 4 }]} onPress={this.nextQuestion.bind(this, 'b')}>
                 <Text style={Styles.buttonText}>
                   {question ? question.options.b : '-'}
                 </Text>
@@ -222,26 +183,12 @@ class Quiz extends React.Component {
             </View>
             {question && question.options.c
               ? <View style={styles.optionsRow}>
-                  <TouchableOpacity
-                    style={[
-                      Styles.buttonOragen,
-                      styles.option,
-                      { marginRight: 4 }
-                    ]}
-                    onPress={this.nextQuestion.bind(this, 'c')}
-                  >
+                  <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginRight: 4 }]} onPress={this.nextQuestion.bind(this, 'c')}>
                     <Text style={Styles.buttonText}>
                       {question ? question.options.c : '-'}
                     </Text>
                   </TouchableOpacity>
-                  <TouchableOpacity
-                    style={[
-                      Styles.buttonOragen,
-                      styles.option,
-                      { marginLeft: 4 }
-                    ]}
-                    onPress={this.nextQuestion.bind(this, 'd')}
-                  >
+                  <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginLeft: 4 }]} onPress={this.nextQuestion.bind(this, 'd')}>
                     <Text style={Styles.buttonText}>
                       {question ? question.options.d : '-'}
                     </Text>

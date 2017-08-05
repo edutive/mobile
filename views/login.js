@@ -1,17 +1,5 @@
 import React from 'react';
-import {
-  AppRegistry,
-  Text,
-  Button,
-  View,
-  StyleSheet,
-  TextInput,
-  TouchableOpacity,
-  ScrollView,
-  Dimensions,
-  Alert,
-  AsyncStorage
-} from 'react-native';
+import { AppRegistry, Text, Button, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Dimensions, Alert, AsyncStorage } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
@@ -88,23 +76,50 @@ class Login extends React.Component {
   }
 
   facebookLogin() {
-    LoginManager.logInWithReadPermissions(['public_profile']).then(
-      result => {
-        console.log(result);
+    LoginManager.logInWithReadPermissions(['public_profile', 'email'])
+      .then(result => {
         if (result.isCancelled) {
-          alert('Login cancelled');
+          return Promise.resolve('cancelled');
         } else {
-          alert('Login success with permissions: ' + result.grantedPermissions.toString());
+          return AccessToken.getCurrentAccessToken();
+        }
+      })
+      .then(data => {
+        const credential = firebase.auth.FacebookAuthProvider.credential(data.accessToken);
 
-          AccessToken.getCurrentAccessToken().then(data => {
-            alert(data.accessToken.toString());
+        return firebase.auth().signInWithCredential(credential);
+      })
+      .then(currentUser => {
+        if (currentUser === 'cancelled') {
+          console.log('Login cancelled');
+        } else {
+          console.log(currentUser.toJSON());
+          const name = currentUser.displayName.split(' ');
+
+          global.USER = {
+            uid: currentUser.uid,
+            email: currentUser.email,
+            firstname: name[0],
+            lastname: name.length > 1 ? name[name.length - 1] : '',
+            picture: currentUser.photoURL,
+            facebookId: currentUser.providerData[0].uid
+          };
+
+          firebase.database().ref('users').child(global.USER.uid).set(global.USER);
+
+          AsyncStorage.setItem('user', JSON.stringify(global.USER), error => {
+            const resetAction = NavigationActions.reset({
+              index: 0,
+              actions: [NavigationActions.navigate({ routeName: 'Home' })]
+            });
+
+            this.props.navigation.dispatch(resetAction);
           });
         }
-      },
-      error => {
+      })
+      .catch(error => {
         alert('Login fail with error: ' + error);
-      }
-    );
+      });
   }
 
   render() {
@@ -138,19 +153,10 @@ class Login extends React.Component {
               />
             </View>
             <View style={Styles.row}>
-              <TouchableOpacity
-                color="#000"
-                style={{ marginTop: 10 }}
-                onPress={this.signup.bind(this)}
-              >
+              <TouchableOpacity color="#000" style={{ marginTop: 10 }} onPress={this.signup.bind(this)}>
                 <Text>Cadastre-se</Text>
               </TouchableOpacity>
-              <TouchableOpacity
-                style={Styles.buttonOragen}
-                color="#FFF"
-                disabled={this.state.loading}
-                onPress={this.login.bind(this)}
-              >
+              <TouchableOpacity style={Styles.buttonOragen} color="#FFF" disabled={this.state.loading} onPress={this.login.bind(this)}>
                 <Text style={Styles.buttonText}>Entrar</Text>
               </TouchableOpacity>
             </View>

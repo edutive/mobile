@@ -20,8 +20,7 @@ class Messages extends React.Component {
       headerTintColor: '#FFF',
       headerStyle: Styles.headerStyle,
       tabBarIcon: ({ tintColor }) => <Icon name="bubbles" size={20} color={tintColor} />,
-      headerRight:
-        state && state.params && state.params.renderHeaderRight && state.params.renderHeaderRight()
+      headerRight: state && state.params && state.params.renderHeaderRight && state.params.renderHeaderRight()
     };
   };
 
@@ -33,6 +32,7 @@ class Messages extends React.Component {
     });
 
     this.state = {
+      loading: true,
       users: {},
       chats: this.listView.cloneWithRows({})
     };
@@ -116,15 +116,8 @@ class Messages extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <NoContent
-          title="Nenhuma mensagem encontrada"
-          visible={Object.keys(this.chats).length === 0}
-        />
-        <ListView
-          enableEmptySections={true}
-          dataSource={this.state.chats}
-          renderRow={this.renderMessages.bind(this)}
-        />
+        <NoContent title="Nenhuma mensagem encontrada" loading={this.state.loading} visible={Object.keys(this.chats).length === 0} />
+        <ListView enableEmptySections={true} dataSource={this.state.chats} renderRow={this.renderMessages.bind(this)} />
       </View>
     );
   }

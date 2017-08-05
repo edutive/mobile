@@ -1,16 +1,5 @@
 import React from 'react';
-import {
-  AppRegistry,
-  Button,
-  Text,
-  TextInput,
-  ListView,
-  Alert,
-  View,
-  Image,
-  StyleSheet,
-  AsyncStorage
-} from 'react-native';
+import { AppRegistry, Button, Text, TextInput, ListView, Alert, View, Image, StyleSheet, AsyncStorage } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -26,8 +15,7 @@ class Profile extends React.Component {
     title: 'Perfil',
     headerTintColor: '#FFF',
     headerStyle: Styles.headerStyle,
-    tabBarIcon: ({ tintColor }) =>
-      <Icon name="user" size={20} color={tintColor} />
+    tabBarIcon: ({ tintColor }) => <Icon name="user" size={20} color={tintColor} />
   };
 
   constructor(props) {
@@ -57,21 +45,11 @@ class Profile extends React.Component {
   render() {
     return (
       <View style={styles.header}>
-        <UserPicture
-          picture={global.USER.picture}
-          firstname={global.USER.firstname}
-          lastname={global.USER.lastname}
-        />
+        <UserPicture big={true} picture={global.USER.picture} firstname={global.USER.firstname} lastname={global.USER.lastname} />
         <Text style={styles.title}>
           {`${global.USER.firstname} ${global.USER.lastname}`}
         </Text>
-        <Icon
-          name="logout"
-          size={20}
-          color="#FFF"
-          onPress={this.logout.bind(this)}
-          style={styles.logout}
-        />
+        <Icon name="logout" size={20} color="#FFF" onPress={this.logout.bind(this)} style={styles.logout} />
       </View>
     );
   }

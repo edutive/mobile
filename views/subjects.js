@@ -9,6 +9,7 @@ import Styles from '../styles';
 import firebase from '../firebase';
 
 import IconBox from '../components/iconBox';
+import NoContent from '../components/noContent';
 
 class Subjects extends React.Component {
   static navigationOptions = {
@@ -26,6 +27,7 @@ class Subjects extends React.Component {
     });
 
     this.state = {
+      loading: true,
       subjects: this.listView.cloneWithRows({})
     };
 
@@ -36,10 +38,7 @@ class Subjects extends React.Component {
   componentWillMount() {
     this.ref = firebase.database().ref('subjects');
 
-    this.ref
-      .orderByChild('user')
-      .equalTo(global.USER.uid)
-      .on('value', this.handleSubjects.bind(this));
+    this.ref.orderByChild('user').equalTo(global.USER.uid).on('value', this.handleSubjects.bind(this));
   }
 
   componentWillUnmount() {
@@ -64,30 +63,16 @@ class Subjects extends React.Component {
   renderSubject(subject) {
     if (!subject) return null;
 
-    const icons = [
-      { name: 'people', value: '0' },
-      { name: 'question', value: '0' },
-      { name: 'envelope-open', value: '0' }
-    ];
+    const icons = [{ name: 'people', value: '0' }, { name: 'question', value: '0' }, { name: 'envelope-open', value: '0' }];
 
-    return (
-      <IconBox
-        title={subject.name}
-        onPress={this.openSubject.bind(this, subject)}
-        subjectIcon={subject.icon}
-        icons={icons}
-      />
-    );
+    return <IconBox title={subject.name} onPress={this.openSubject.bind(this, subject)} subjectIcon={subject.icon} icons={icons} />;
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <ListView
-          enableEmptySections={true}
-          dataSource={this.state.subjects}
-          renderRow={this.renderSubject.bind(this)}
-        />
+        <NoContent title="Nenhuma disciplina encontrada" loading={this.state.loading} visible={this.subjects.length === 0} />
+        <ListView enableEmptySections={true} dataSource={this.state.subjects} renderRow={this.renderSubject.bind(this)} />
       </View>
     );
   }

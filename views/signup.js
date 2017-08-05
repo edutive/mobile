@@ -46,12 +46,7 @@ class SignUp extends React.Component {
   }
 
   signup() {
-    if (
-      this.state.firstname &&
-      this.state.lastname &&
-      this.state.email &&
-      this.state.password
-    ) {
+    if (this.state.firstname && this.state.lastname && this.state.email && this.state.password) {
       if (this.state.password.length >= 6) {
         firebase
           .auth()
@@ -77,10 +72,7 @@ class SignUp extends React.Component {
           })
           .catch(error => {
             if (error.userInfo.error_name === 'ERROR_EMAIL_ALREADY_IN_USE') {
-              Alert.alert(
-                'E-mail',
-                'Esse e-mail já foi utilizado por outro usuário'
-              );
+              Alert.alert('E-mail', 'Esse e-mail já foi utilizado por outro usuário');
             }
             console.log(error.userInfo);
           });
@@ -151,15 +143,8 @@ class SignUp extends React.Component {
       <KeyboardAvoidingView style={styles.container} behavior="padding">
         <View style={styles.form}>
           <View style={[Styles.row, { marginBottom: 20 }]}>
-            <UserPicture
-              picture={this.state.photo}
-              firstname={this.state.firstname}
-              lastname={this.state.lastname}
-            />
-            <TouchableOpacity
-              onPress={this.choosePhoto.bind(this)}
-              style={[Styles.buttonOragen, { alignSelf: 'center' }]}
-            >
+            <UserPicture big={true} picture={this.state.photo} firstname={this.state.firstname} lastname={this.state.lastname} />
+            <TouchableOpacity onPress={this.choosePhoto.bind(this)} style={[Styles.buttonOragen, { alignSelf: 'center' }]}>
               <Text style={Styles.buttonText}>Selecionar Foto</Text>
             </TouchableOpacity>
           </View>
@@ -207,19 +192,10 @@ class SignUp extends React.Component {
             />
           </View>
           <View style={Styles.row}>
-            <TouchableOpacity
-              color="#000"
-              style={{ marginTop: 10 }}
-              onPress={this.login.bind(this)}
-            >
+            <TouchableOpacity color="#000" style={{ marginTop: 10 }} onPress={this.login.bind(this)}>
               <Text>Voltar</Text>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={Styles.buttonOragen}
-              color="#FFF"
-              disabled={this.state.loading}
-              onPress={this.signup.bind(this)}
-            >
+            <TouchableOpacity style={Styles.buttonOragen} color="#FFF" disabled={this.state.loading} onPress={this.signup.bind(this)}>
               <Text style={Styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
           </View>

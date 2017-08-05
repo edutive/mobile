@@ -31,6 +31,7 @@ class Quizes extends React.Component {
     }
 
     this.state = {
+      loading: true,
       subject: this.props.navigation.state.params,
       subjects: subjects,
       quizes: this.listView.cloneWithRows({})
@@ -43,15 +44,9 @@ class Quizes extends React.Component {
   componentWillMount() {
     this.ref = firebase.database().ref('quizes');
     if (!this.state.subject) {
-      this.ref
-        .orderByChild('user')
-        .equalTo(global.USER.uid)
-        .on('value', this.handleQuizes.bind(this));
+      this.ref.orderByChild('user').equalTo(global.USER.uid).on('value', this.handleQuizes.bind(this));
     } else {
-      this.ref
-        .orderByChild('user')
-        .equalTo(global.USER.uid)
-        .on('value', this.handleQuizes.bind(this));
+      this.ref.orderByChild('user').equalTo(global.USER.uid).on('value', this.handleQuizes.bind(this));
     }
   }
 
@@ -117,11 +112,7 @@ class Quizes extends React.Component {
             </View>
           </View>
           {this.state.subjects[quiz.subject]
-            ? <Icon
-                name={this.state.subjects[quiz.subject].icon}
-                size={40}
-                color={Constants.colors.orangeIcon}
-              />
+            ? <Icon name={this.state.subjects[quiz.subject].icon} size={40} color={Constants.colors.orangeIcon} />
             : null}
         </View>
       </TouchableOpacity>
@@ -131,12 +122,8 @@ class Quizes extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <NoContent title="Nenhum quiz encontrado" visible={this.quizes.length === 0} />
-        <ListView
-          enableEmptySections={true}
-          dataSource={this.state.quizes}
-          renderRow={this.renderQuiz.bind(this)}
-        />
+        <NoContent title="Nenhum quiz encontrado" loading={this.state.loading} visible={this.quizes.length === 0} />
+        <ListView enableEmptySections={true} dataSource={this.state.quizes} renderRow={this.renderQuiz.bind(this)} />
       </View>
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, TouchableOpacity, Text, ListView, Alert, View } from 'react-native';
+import { AppRegistry, TouchableOpacity, Text, ListView, Alert, View, ActivityIndicator } from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 import Constants from '../contants';
@@ -11,7 +11,9 @@ class NoContent extends React.Component {
   }
 
   render() {
-    if (!this.props.visible) {
+    if (this.props.loading) {
+      return <ActivityIndicator color={Constants.colors.yellow} size="large" style={{ marginTop: 20 }} />;
+    } else if (!this.props.visible) {
       return null;
     } else {
       return (

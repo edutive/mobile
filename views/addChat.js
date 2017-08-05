@@ -65,6 +65,8 @@ class AddChat extends React.Component {
   handleUsers(snapshop) {
     this.users = snapshop.val() || {};
 
+    alert(Object.keys(this.users).length);
+
     Object.keys(this.users).forEach(user => {
       if (user === global.USER.uid) {
         delete this.users[user];
@@ -78,52 +80,41 @@ class AddChat extends React.Component {
   }
 
   search() {
-    this.ref = firebase
-      .database()
-      .ref('users/')
-      .orderByChild('firstname')
-      .startAt(this.state.search);
+    this.ref = firebase.database().ref('users').orderByChild('lastname').startAt(this.state.search);
     this.ref.once('value', this.handleUsers.bind(this));
   }
 
   openMessage(user, key) {
-    firebase
-      .database()
-      .ref('chats/' + global.USER.uid)
-      .orderByChild('user')
-      .startAt(key)
-      .once('value', snapshop => {
-        let newChatKey = null;
+    firebase.database().ref('chats/' + global.USER.uid).orderByChild('user').startAt(key).once('value', snapshop => {
+      let newChatKey = null;
 
-        if (!snapshop.val()) {
-          const messageId = new Date().getTime();
+      if (!snapshop.val()) {
+        const messageId = new Date().getTime();
 
-          const ref = firebase.database().ref('chats').child(global.USER.uid).push();
-          newChatKey = ref.key;
+        const ref = firebase.database().ref('chats').child(global.USER.uid).push();
+        newChatKey = ref.key;
 
-          ref.set({
-            chat: newChatKey,
-            message: messageId,
-            user: key
-          });
-
-          const senderChat = {};
-          senderChat[newChatKey] = {
-            chat: newChatKey,
-            message: messageId,
-            user: global.USER.uid
-          };
-
-          firebase.database().ref('chats').child(key).set(senderChat);
-        }
-
-        this.props.navigation.navigate('Message', {
-          chat: snapshop.val()
-            ? snapshop.val()[Object.keys(snapshop.val())[0]]
-            : { chat: newChatKey, user: key },
-          user: user
+        ref.set({
+          chat: newChatKey,
+          message: messageId,
+          user: key
         });
+
+        const senderChat = {};
+        senderChat[newChatKey] = {
+          chat: newChatKey,
+          message: messageId,
+          user: global.USER.uid
+        };
+
+        firebase.database().ref('chats').child(key).set(senderChat);
+      }
+
+      this.props.navigation.navigate('Message', {
+        chat: snapshop.val() ? snapshop.val()[Object.keys(snapshop.val())[0]] : { chat: newChatKey, user: key },
+        user: user
       });
+    });
   }
 
   renderUser(user, section, index) {
@@ -144,7 +135,6 @@ class AddChat extends React.Component {
               style={Styles.input}
               onChangeText={message => this.setState({ message })}
               value={this.state.message}
-              onFocus={() => this.refs.listView.scrollToEnd({ animated: true })}
               underlineColorAndroid="transparent"
               onSubmitEditing={this.search.bind(this)}
             />
@@ -153,14 +143,7 @@ class AddChat extends React.Component {
             <Icon name="magnifier" size={16} color="#FFF" />
           </TouchableOpacity>
         </View>
-        <ListView
-          ref="listView"
-          style={{ marginBottom: 62 }}
-          enableEmptySections={true}
-          onContentSizeChange={() => this.refs.listView.scrollToEnd({ animated: true })}
-          dataSource={this.state.users}
-          renderRow={this.renderUser.bind(this)}
-        />
+        <ListView style={{ marginBottom: 62 }} enableEmptySections={true} dataSource={this.state.users} renderRow={this.renderUser.bind(this)} />
       </View>
     );
   }

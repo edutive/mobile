@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/SimpleLineIcons';
 import Constants from '../contants';
 import Styles from '../styles';
 
+import UserPicture from '../components/userPicture';
+
 class UserBox extends React.Component {
   constructor(props) {
     super(props);
@@ -15,15 +17,10 @@ class UserBox extends React.Component {
     return (
       <TouchableOpacity style={Styles.rowBox} onPress={this.props.onPress.bind(this)}>
         <View style={Styles.row2}>
-          <View style={Styles.rowBoxPicture}>
-            <Text style={Styles.rowBoxPictureLabel}>
-              {this.props.user
-                ? this.props.user.firstname.substr(0, 1).toUpperCase() +
-                  this.props.user.lastname.substr(0, 1).toUpperCase()
-                : '-'}
-            </Text>
-          </View>
-          <View>
+          {this.props.user
+            ? <UserPicture picture={this.props.user.picture} firstname={this.props.user.firstname} lastname={this.props.user.lastname} />
+            : null}
+          <View style={{ marginLeft: 10 }}>
             <Text style={Styles.rowBoxTitle}>
               {this.props.user ? `${this.props.user.firstname} ${this.props.user.lastname}` : '-'}
             </Text>
