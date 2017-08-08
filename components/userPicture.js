@@ -7,7 +7,10 @@ class UserPicture extends React.Component {
     return (
       <View style={[styles.picture, this.props.big && styles.big]}>
         {this.props.picture
-          ? <Image source={this.props.picture.uri ? this.props.picture : { uri: this.props.picture }} style={styles.pictureImage} />
+          ? <Image
+              source={this.props.picture.uri ? this.props.picture : { uri: this.props.picture }}
+              style={[styles.pictureImage, this.props.big && styles.big]}
+            />
           : <Text style={[styles.pictureLabel, this.props.big && { fontSize: 30 }]}>
               {this.props.firstname ? this.props.firstname.substr(0, 1).toUpperCase() : '-'}
               {this.props.lastname ? this.props.lastname.substr(0, 1).toUpperCase() : '-'}

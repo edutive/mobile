@@ -42,6 +42,10 @@ class Profile extends React.Component {
     );
   }
 
+  editProfile() {
+    this.props.navigation.navigate('SignUp', global.USER);
+  }
+
   render() {
     return (
       <View style={styles.header}>
@@ -49,7 +53,10 @@ class Profile extends React.Component {
         <Text style={styles.title}>
           {`${global.USER.firstname} ${global.USER.lastname}`}
         </Text>
-        <Icon name="logout" size={20} color="#FFF" onPress={this.logout.bind(this)} style={styles.logout} />
+        <View style={styles.logout}>
+          <Icon name="pencil" size={20} color="#FFF" onPress={this.editProfile.bind(this)} />
+          <Icon name="logout" size={20} color="#FFF" onPress={this.logout.bind(this)} />
+        </View>
       </View>
     );
   }

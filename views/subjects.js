@@ -71,7 +71,7 @@ class Subjects extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <NoContent title="Nenhuma disciplina encontrada" loading={this.state.loading} visible={this.subjects.length === 0} />
+        <NoContent title="Nenhuma disciplina encontrada" loading={this.state.loading} visible={Object.keys(this.subjects).length === 0} />
         <ListView enableEmptySections={true} dataSource={this.state.subjects} renderRow={this.renderSubject.bind(this)} />
       </View>
     );

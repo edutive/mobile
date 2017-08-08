@@ -32,12 +32,14 @@ class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
+    const user = this.props.navigation.state.params;
+
     this.state = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-      photo: null
+      firstname: user ? user.firstname : '',
+      lastname: user ? user.lastname : '',
+      email: user ? user.email : '',
+      password: user ? user.password : '',
+      photo: user ? user.picture : null
     };
   }
 

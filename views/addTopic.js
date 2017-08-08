@@ -44,11 +44,7 @@ class AddTopic extends React.Component {
   }
 
   save() {
-    const ref = firebase
-      .database()
-      .ref('topics')
-      .child(this.state.category.id)
-      .push();
+    const ref = firebase.database().ref('topics').child(this.state.category.id).push();
     newChatKey = ref.key;
 
     ref.set({
@@ -74,10 +70,7 @@ class AddTopic extends React.Component {
               onSubmitEditing={this.save.bind(this)}
             />
           </View>
-          <TouchableOpacity
-            style={styles.sendButton}
-            onPress={this.save.bind(this)}
-          >
+          <TouchableOpacity style={styles.sendButton} onPress={this.save.bind(this)}>
             <Icon name="add" size={16} color="#FFF" />
           </TouchableOpacity>
         </View>
