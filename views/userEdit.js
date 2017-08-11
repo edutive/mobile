@@ -24,21 +24,27 @@ import Styles from '../styles';
 
 import UserPicture from '../components/userPicture';
 
-class SignUp extends React.Component {
+class UserEdit extends React.Component {
   static navigationOptions = {
-    header: null
+    title: 'Editar Perfil',
+    headerTintColor: '#FFF',
+    headerStyle: Styles.headerStyle
   };
 
   constructor(props) {
     super(props);
 
+    const user = this.props.navigation.state.params;
+
     this.state = {
-      firstname: '',
-      lastname: '',
-      email: '',
-      password: '',
-      photo: null
+      uid: user.uid,
+      firstname: user.firstname,
+      lastname: user.lastname,
+      email: user.email,
+      photo: user.picture
     };
+
+    this.updatedPhoto = false;
   }
 
   login() {
@@ -46,54 +52,39 @@ class SignUp extends React.Component {
   }
 
   signup() {
-    if (this.state.firstname && this.state.lastname && this.state.email && this.state.password) {
-      if (this.state.password.length >= 6) {
+    if (this.state.firstname && this.state.lastname) {
+      if (this.updatedPhoto) {
         firebase
-          .auth()
-          .createUserWithEmailAndPassword(this.state.email, this.state.password)
-          .then(user => {
-            if (this.state.photo) {
-              firebase
-                .storage()
-                .ref('/files/' + user.uid)
-                .putFile(this.state.photo.uri, {
-                  contentType: 'image/jpeg'
-                })
-                .then(uploadedFile => {
-                  this.registerCallback(user, uploadedFile.downloadUrl);
-                })
-                .catch(err => {
-                  console.log('Upload Error', err);
-                  Alert.alert('Imagem', 'Não foi possível enviar sua imagem.');
-                });
-            } else {
-              this.registerCallback(user, undefined);
-            }
+          .storage()
+          .ref('/files/' + this.state.uid)
+          .putFile(this.state.photo.uri, {
+            contentType: 'image/jpeg'
           })
-          .catch(error => {
-            if (error.userInfo.error_name === 'ERROR_EMAIL_ALREADY_IN_USE') {
-              Alert.alert('E-mail', 'Esse e-mail já foi utilizado por outro usuário');
-            }
-            console.log(error.userInfo);
+          .then(uploadedFile => {
+            this.registerCallback(uploadedFile.downloadUrl);
+          })
+          .catch(err => {
+            console.log('Upload Error', err);
+            Alert.alert('Imagem', 'Não foi possível enviar sua imagem.');
           });
       } else {
-        Alert.alert('Senha', 'Sua senha deve ter 6 digitos ou mais');
+        this.registerCallback(undefined);
       }
     } else {
       Alert.alert('Campos Obrigatórios', 'Por favor, preencha todos os campos');
     }
   }
 
-  registerCallback(user, pictureUrl) {
+  registerCallback(pictureUrl) {
     global.USER = {
-      uid: user.uid,
+      uid: this.state.uid,
       email: this.state.email,
       firstname: this.state.firstname,
       lastname: this.state.lastname,
       picture: pictureUrl
     };
 
-    firebase.database().ref('users').child(user.uid).set(global.USER);
+    firebase.database().ref('users').child(this.state.uid).set(global.USER);
 
     AsyncStorage.setItem('user', JSON.stringify(global.USER), error => {
       const resetAction = NavigationActions.reset({
@@ -127,6 +118,7 @@ class SignUp extends React.Component {
           console.log('User tapped custom button: ', response.customButton);
         } else {
           let source = { uri: response.uri };
+          this.updatedPhoto = true;
 
           this.setState({
             photo: source
@@ -140,7 +132,7 @@ class SignUp extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <KeyboardAvoidingView behavior="padding">
         <View style={styles.form}>
           <View style={[Styles.row, { marginBottom: 20 }]}>
             <UserPicture big={true} picture={this.state.photo} firstname={this.state.firstname} lastname={this.state.lastname} />
@@ -166,37 +158,11 @@ class SignUp extends React.Component {
               style={Styles.input}
               onChangeText={lastname => this.setState({ lastname })}
               value={this.state.lastname}
-              onSubmitEditing={() => this.refs.email.focus()}
-            />
-          </View>
-          <Text style={Styles.label}>E-mail</Text>
-          <View style={Styles.inputArea}>
-            <TextInput
-              ref="email"
-              keyboardType="email-address"
-              autoCapitalize="none"
-              style={Styles.input}
-              onChangeText={email => this.setState({ email })}
-              value={this.state.email}
-              onSubmitEditing={() => this.refs.password.focus()}
-            />
-          </View>
-          <Text style={Styles.label}>Senha</Text>
-          <View style={Styles.inputArea}>
-            <TextInput
-              ref="password"
-              secureTextEntry={true}
-              style={Styles.input}
-              onChangeText={password => this.setState({ password })}
-              value={this.state.password}
             />
           </View>
           <View style={Styles.row}>
-            <TouchableOpacity color="#000" style={{ marginTop: 10 }} onPress={this.login.bind(this)}>
-              <Text>Voltar</Text>
-            </TouchableOpacity>
             <TouchableOpacity style={Styles.buttonOragen} color="#FFF" disabled={this.state.loading} onPress={this.signup.bind(this)}>
-              <Text style={Styles.buttonText}>Cadastrar</Text>
+              <Text style={Styles.buttonText}>Atualizar</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -206,18 +172,9 @@ class SignUp extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: Constants.colors.blue
-  },
   form: {
-    margin: 20,
-    marginTop: 40,
-    padding: 20,
-    borderRadius: 8,
-    backgroundColor: '#FFF'
+    margin: 20
   }
 });
 
-module.exports = SignUp;
+module.exports = UserEdit;

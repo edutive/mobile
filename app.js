@@ -26,6 +26,8 @@ import ForumCategory from './views/forumCategory';
 import ForumTopic from './views/forumTopic';
 import AddTopic from './views/addTopic';
 
+import UserEdit from './views/userEdit';
+
 global.USER = null;
 
 const Home = TabNavigator(
@@ -76,7 +78,8 @@ const Edutive = StackNavigator({
   Forum: { screen: Forum },
   ForumCategory: { screen: ForumCategory },
   ForumTopic: { screen: ForumTopic },
-  AddTopic: { screen: AddTopic }
+  AddTopic: { screen: AddTopic },
+  UserEdit: { screen: UserEdit }
 });
 
 AppRegistry.registerComponent('edutive', () => Edutive);

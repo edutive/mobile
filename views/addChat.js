@@ -56,6 +56,11 @@ class AddChat extends React.Component {
     this.users = {};
   }
 
+  componentWillMount() {
+    this.ref = firebase.database().ref('users');
+    this.ref.once('value', this.handleUsers.bind(this));
+  }
+
   componentWillUnmount() {
     if (this.ref) {
       this.ref.off('value', this.handleUsers.bind(this));
@@ -64,8 +69,6 @@ class AddChat extends React.Component {
 
   handleUsers(snapshop) {
     this.users = snapshop.val() || {};
-
-    alert(Object.keys(this.users).length);
 
     Object.keys(this.users).forEach(user => {
       if (user === global.USER.uid) {
@@ -80,8 +83,21 @@ class AddChat extends React.Component {
   }
 
   search() {
-    this.ref = firebase.database().ref('users').orderByChild('lastname').startAt(this.state.search);
-    this.ref.once('value', this.handleUsers.bind(this));
+    let filtered = [];
+    if (this.state.message.length > 0) {
+      Object.keys(this.users).forEach(user => {
+        const name = this.users[user].firstname + ' ' + this.users[user].lastname;
+        if (name.indexOf(this.state.message) >= 0) {
+          filtered.push(this.users[user]);
+        }
+      });
+    } else {
+      filtered = this.users;
+    }
+
+    this.setState({
+      users: this.listView.cloneWithRows(filtered)
+    });
   }
 
   openMessage(user, key) {
