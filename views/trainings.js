@@ -2,19 +2,26 @@ import React from 'react';
 import { AppRegistry, TouchableOpacity, Text, ListView, Alert, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
+import moment from 'moment';
 
 import Constants from '../contants';
 import Styles from '../styles';
 
 import firebase from '../firebase';
 
+import IconBox from '../components/iconBox';
 import NoContent from '../components/noContent';
 
 class Training extends React.Component {
-  static navigationOptions = {
-    title: 'Treinamentos',
-    headerTintColor: '#FFF',
-    headerStyle: Styles.headerStyle
+  static navigationOptions = ({ navigation }) => {
+    const { state } = navigation;
+
+    return {
+      title: 'Treinamentos',
+      headerTintColor: '#FFF',
+      headerStyle: Styles.headerStyle,
+      headerRight: state && state.params && state.params.renderHeaderRight && state.params.renderHeaderRight()
+    };
   };
 
   constructor(props) {
@@ -34,17 +41,27 @@ class Training extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = firebase.database().ref('trainings');
-    this.ref
-      .orderByChild('user')
-      .equalTo(global.USER.uid)
-      .on('value', this.handleTrainings.bind(this));
+    this.ref = firebase.database().ref('trainings/' + global.USER.uid + '/' + this.state.subject.id);
+    this.ref.on('value', this.handleTrainings.bind(this));
+
+    if (!this.props.navigation.state.params.renderHeaderRight) {
+      this.props.navigation.setParams({
+        renderHeaderRight: () =>
+          <TouchableOpacity onPress={() => this.startTraining()}>
+            <Icon name="plus" size={20} color="#FFF" style={{ marginRight: 16 }} />
+          </TouchableOpacity>
+      });
+    }
   }
 
   componentWillUnmount() {
     if (this.ref) {
       this.ref.off('value', this.handleTrainings.bind(this));
     }
+  }
+
+  startTraining() {
+    this.props.navigation.navigate('Training', this.state.subject);
   }
 
   handleTrainings(snapshop) {
@@ -56,46 +73,24 @@ class Training extends React.Component {
     });
   }
 
-  renderTraining(training) {
-    if (!training || (this.state.subject && this.state.subject.id !== training.subject))
-      return null;
+  openTraining(training) {
+    this.props.navigation.navigate('Results', training);
+  }
 
-    return (
-      <TouchableOpacity style={Styles.rowBox}>
-        <View style={Styles.row}>
-          <View>
-            <Text style={Styles.rowBoxTitle}>
-              {training.name}
-            </Text>
-            <View style={Styles.rowBoxContent}>
-              <Text style={Styles.rowBoxContentTextNoMargin}>
-                {this.state.subjects[training.subject]
-                  ? this.state.subjects[training.subject].name
-                  : '-'}
-              </Text>
-            </View>
-          </View>
-          {this.state.subjects[training.subject]
-            ? <Icon
-                name={this.state.subjects[training.subject].icon}
-                size={40}
-                color={Constants.colors.orangeIcon}
-              />
-            : null}
-        </View>
-      </TouchableOpacity>
-    );
+  renderTraining(training) {
+    if (!training) return null;
+
+    const icons = [{ name: 'question', value: training.answers.length }];
+    const date = moment.unix(training.date / 1000).fromNow();
+
+    return <IconBox title={date} onPress={this.openTraining.bind(this, training)} subjectIcon={this.state.subject.icon} icons={icons} />;
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
         <NoContent title="Nenhum treinamento encontrado" visible={this.trainings.length === 0} />
-        <ListView
-          enableEmptySections={true}
-          dataSource={this.state.trainings}
-          renderRow={this.renderTraining.bind(this)}
-        />
+        <ListView enableEmptySections={true} dataSource={this.state.trainings} renderRow={this.renderTraining.bind(this)} />
       </View>
     );
   }

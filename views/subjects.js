@@ -12,11 +12,16 @@ import IconBox from '../components/iconBox';
 import NoContent from '../components/noContent';
 
 class Subjects extends React.Component {
-  static navigationOptions = {
-    title: 'Disciplinas',
-    headerTintColor: '#FFF',
-    headerStyle: Styles.headerStyle,
-    tabBarIcon: ({ tintColor }) => <Icon name="graduation" size={20} color={tintColor} />
+  static navigationOptions = ({ navigation }) => {
+    const { state } = navigation;
+
+    return {
+      title: 'Disciplinas',
+      headerTintColor: '#FFF',
+      headerStyle: Styles.headerStyle,
+      tabBarIcon: ({ tintColor }) => <Icon name="graduation" size={20} color={tintColor} />,
+      headerRight: state && state.params && state.params.renderHeaderRight && state.params.renderHeaderRight()
+    };
   };
 
   constructor(props) {
@@ -36,9 +41,17 @@ class Subjects extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = firebase.database().ref('subjects');
+    this.ref = firebase.database().ref('students/' + global.USER.uid);
+    this.ref.on('value', this.handleSubjects.bind(this));
 
-    this.ref.orderByChild('user').equalTo(global.USER.uid).on('value', this.handleSubjects.bind(this));
+    if (!this.props.navigation.state.params) {
+      this.props.navigation.setParams({
+        renderHeaderRight: () =>
+          <TouchableOpacity onPress={() => this.addSubject()}>
+            <Icon name="plus" size={20} color="#FFF" style={{ marginRight: 16 }} />
+          </TouchableOpacity>
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -47,12 +60,22 @@ class Subjects extends React.Component {
     }
   }
 
-  handleSubjects(snapshop) {
-    this.subjects = snapshop.val() || {};
+  addSubject() {
+    this.props.navigation.navigate('AddSubject');
+  }
 
-    this.setState({
-      loading: false,
-      subjects: this.listView.cloneWithRows(this.subjects)
+  handleSubjects(snapshop) {
+    const subjects = snapshop.val() || {};
+
+    Object.keys(subjects).forEach(key => {
+      firebase.database().ref('subjects/' + key).once('value', snapshopSubject => {
+        this.subjects[key] = snapshopSubject.val();
+
+        this.setState({
+          loading: false,
+          subjects: this.listView.cloneWithRows(this.subjects)
+        });
+      });
     });
   }
 

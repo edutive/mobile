@@ -13,13 +13,16 @@ import Results from './views/results';
 
 import Subjects from './views/subjects';
 import Subject from './views/subject';
+import AddSubject from './views/addSubject';
 
 import Messages from './views/messages';
 import Message from './views/message';
 import AddChat from './views/addChat';
 
 import Profile from './views/profile';
+
 import Trainings from './views/trainings';
+import Training from './views/training';
 
 import Forum from './views/forum';
 import ForumCategory from './views/forumCategory';
@@ -69,9 +72,11 @@ const Edutive = StackNavigator({
   SignUp: { screen: SignUp },
   Home: { screen: Home },
   Subject: { screen: Subject },
+  AddSubject: { screen: AddSubject },
   Quizes: { screen: Quizes },
   Quiz: { screen: Quiz },
   Trainings: { screen: Trainings },
+  Training: { screen: Training },
   Message: { screen: Message },
   AddChat: { screen: AddChat },
   Results: { screen: Results },
