@@ -42,12 +42,13 @@ class Quizes extends React.Component {
   }
 
   componentWillMount() {
-    this.ref = firebase.database().ref('quizes');
-    if (!this.state.subject) {
-      this.ref.orderByChild('user').equalTo(global.USER.uid).on('value', this.handleQuizes.bind(this));
-    } else {
-      this.ref.orderByChild('user').equalTo(global.USER.uid).on('value', this.handleQuizes.bind(this));
-    }
+    this.ref = firebase.database().ref('quizes').on('value', this.handleQuizes.bind(this));
+
+    firebase.database().ref('subjects').once('value', subjectSnap => {
+      this.setState({
+        subjects: subjectSnap.val()
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -57,30 +58,20 @@ class Quizes extends React.Component {
   }
 
   handleQuizes(snapshop) {
-    const quizes = snapshop.val() || [];
+    this.quizes = snapshop.val() || {};
 
-    quizes.forEach(quiz => {
-      if (quiz) {
-        if (!this.state.subject) {
-          this.quizes.push(quiz);
-
-          if (!this.state.subjects[quiz.subject]) {
-            firebase.database().ref('subjects/' + quiz.subject).once('value', subjectSnap => {
-              const subjects = this.state.subjects;
-              subjects[quiz.subject] = subjectSnap.val();
-
-              this.setState({
-                subjects: subjects
-              });
-            });
-          }
-        } else {
-          if (this.state.subject.id === quiz.subject) {
-            this.quizes.push(quiz);
-          }
-        }
-      }
-    });
+    // Object.keys(quizes).forEach(key => {
+    //   const quiz = quizes[key];
+    //   if (quiz) {
+    //     if (!this.state.subject) {
+    //       this.quizes.push(quiz);
+    //     } else {
+    //       if (this.state.subject.id === quiz.subject) {
+    //         this.quizes.push(quiz);
+    //       }
+    //     }
+    //   }
+    // });
 
     this.setState({
       loading: false,

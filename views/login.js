@@ -1,10 +1,25 @@
 import React from 'react';
-import { AppRegistry, Text, Button, View, StyleSheet, TextInput, TouchableOpacity, ScrollView, Dimensions, Alert, AsyncStorage } from 'react-native';
+import {
+  AppRegistry,
+  Text,
+  Button,
+  View,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Dimensions,
+  Alert,
+  AsyncStorage
+} from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
 import { NavigationActions } from 'react-navigation';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import firebase from '../firebase';
 
 import Constants from '../contants';
@@ -20,7 +35,8 @@ class Login extends React.Component {
 
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      loading: false
     };
   }
 
@@ -44,6 +60,10 @@ class Login extends React.Component {
   }
 
   login() {
+    this.setState({
+      loading: true
+    });
+
     firebase
       .auth()
       .signInWithEmailAndPassword(this.state.email, this.state.password)
@@ -59,6 +79,10 @@ class Login extends React.Component {
           global.USER = userObject;
 
           AsyncStorage.setItem('user', JSON.stringify(userObject), error => {
+            this.setState({
+              loading: false
+            });
+
             if (!error) {
               const resetAction = NavigationActions.reset({
                 index: 0,
@@ -72,6 +96,9 @@ class Login extends React.Component {
       })
       .catch(error => {
         Alert.alert('Error', 'Não foi possível realizar o login, verifique seu e-mail e senha');
+        this.setState({
+          loading: false
+        });
       });
   }
 
@@ -124,8 +151,10 @@ class Login extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.scroll} ref="scroll">
+      <KeyboardAwareScrollView style={styles.scroll}>
         <View style={styles.container}>
+          <Image style={styles.logo} source={require('../images/logo.png')} />
+
           <View style={styles.form}>
             <Text style={Styles.label}>E-mail</Text>
             <View style={Styles.inputArea}>
@@ -135,7 +164,6 @@ class Login extends React.Component {
                 style={Styles.input}
                 onChangeText={email => this.setState({ email })}
                 value={this.state.email}
-                onFocus={() => this.refs.scroll.scrollTo({ x: 0, y: 70, animated: true })}
                 onSubmitEditing={() => this.refs.password.focus()}
               />
             </View>
@@ -147,9 +175,6 @@ class Login extends React.Component {
                 style={Styles.input}
                 onChangeText={password => this.setState({ password })}
                 value={this.state.password}
-                onFocus={() => this.refs.scroll.scrollTo({ x: 0, y: 70, animated: true })}
-                onBlur={() => this.refs.scroll.scrollTo({ x: 0, y: 0, animated: true })}
-                onSubmitEditing={event => this.refs.scroll.scrollTo({ x: 0, y: 0, animated: true })}
               />
             </View>
             <View style={Styles.row}>
@@ -157,7 +182,9 @@ class Login extends React.Component {
                 <Text>Cadastre-se</Text>
               </TouchableOpacity>
               <TouchableOpacity style={Styles.buttonOragen} color="#FFF" disabled={this.state.loading} onPress={this.login.bind(this)}>
-                <Text style={Styles.buttonText}>Entrar</Text>
+                <Text style={Styles.buttonText}>
+                  {this.state.loading ? 'Carregando' : 'Entrar'}
+                </Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity style={Styles.buttonDark} onPress={() => this.facebookLogin()}>
@@ -165,7 +192,7 @@ class Login extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -177,13 +204,13 @@ const styles = StyleSheet.create({
   },
   container: {
     height: height,
-    justifyContent: 'flex-end'
+    justifyContent: 'space-between'
   },
   logo: {
     width: 250,
-    height: 248 / (658 / 250),
+    height: 52,
     marginVertical: 40,
-    resizeMode: 'stretch',
+    resizeMode: 'contain',
     alignSelf: 'center'
   },
   form: {

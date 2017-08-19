@@ -15,6 +15,7 @@ import {
 
 import { NavigationActions } from 'react-navigation';
 import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import ImagePicker from 'react-native-image-picker';
 
 import firebase from '../firebase';
@@ -140,7 +141,7 @@ class SignUp extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <KeyboardAvoidingView style={styles.container} behavior="padding">
+      <KeyboardAwareScrollView style={styles.container}>
         <View style={styles.form}>
           <View style={[Styles.row, { marginBottom: 20 }]}>
             <UserPicture big={true} picture={this.state.photo} firstname={this.state.firstname} lastname={this.state.lastname} />
@@ -200,7 +201,7 @@ class SignUp extends React.Component {
             </TouchableOpacity>
           </View>
         </View>
-      </KeyboardAvoidingView>
+      </KeyboardAwareScrollView>
     );
   }
 }
