@@ -38,16 +38,31 @@ class Quizes extends React.Component {
     };
 
     this.ref = null;
-    this.quizes = [];
+    this.quizes = {};
   }
 
   componentWillMount() {
-    this.ref = firebase.database().ref('quizes').on('value', this.handleQuizes.bind(this));
+    if (!this.state.subject) {
+      firebase.database().ref('subjects').on('value', subjectSnap => {
+        this.setState({
+          subjects: subjectSnap.val()
+        });
 
-    firebase.database().ref('subjects').once('value', subjectSnap => {
-      this.setState({
-        subjects: subjectSnap.val()
+        this.loadAll();
       });
+    } else {
+      this.loadAll();
+    }
+  }
+
+  loadAll() {
+    firebase.database().ref('students/' + global.USER.uid).on('value', subjectSnap => {
+      this.setState({
+        student: subjectSnap.val()
+      });
+
+      this.ref = firebase.database().ref('quizes');
+      this.ref.on('value', this.handleQuizes.bind(this));
     });
   }
 
@@ -58,20 +73,22 @@ class Quizes extends React.Component {
   }
 
   handleQuizes(snapshop) {
-    this.quizes = snapshop.val() || {};
+    const quizes = snapshop.val() || {};
 
-    // Object.keys(quizes).forEach(key => {
-    //   const quiz = quizes[key];
-    //   if (quiz) {
-    //     if (!this.state.subject) {
-    //       this.quizes.push(quiz);
-    //     } else {
-    //       if (this.state.subject.id === quiz.subject) {
-    //         this.quizes.push(quiz);
-    //       }
-    //     }
-    //   }
-    // });
+    Object.keys(quizes).forEach(key => {
+      const quiz = quizes[key];
+      if (quiz) {
+        if (this.state.subject) {
+          if (this.state.student[quiz.subject] && quiz.subject === this.state.subject.id) {
+            this.quizes[key] = quiz;
+          }
+        } else {
+          if (this.state.student[quiz.subject]) {
+            this.quizes[key] = quiz;
+          }
+        }
+      }
+    });
 
     this.setState({
       loading: false,
@@ -113,7 +130,7 @@ class Quizes extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <NoContent title="Nenhum quiz encontrado" loading={this.state.loading} visible={this.quizes.length === 0} />
+        <NoContent title="Nenhum quiz encontrado" loading={this.state.loading} visible={Object.keys(this.quizes).length === 0} />
         <ListView enableEmptySections={true} dataSource={this.state.quizes} renderRow={this.renderQuiz.bind(this)} />
       </View>
     );

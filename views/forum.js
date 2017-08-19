@@ -1,14 +1,5 @@
 import React from 'react';
-import {
-  AppRegistry,
-  TouchableOpacity,
-  Text,
-  ListView,
-  Alert,
-  View,
-  Dimensions,
-  StyleSheet
-} from 'react-native';
+import { AppRegistry, TouchableOpacity, Text, ListView, Alert, View, Dimensions, StyleSheet } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -66,7 +57,10 @@ class Forum extends React.Component {
   }
 
   openForum(forum) {
-    this.props.navigation.navigate('ForumCategory', forum);
+    this.props.navigation.navigate('ForumCategory', {
+      subject: this.state.subject,
+      forum: forum
+    });
   }
 
   renderForum(forum, section, rowID) {
@@ -74,14 +68,7 @@ class Forum extends React.Component {
 
     return (
       <View style={{ width: width / 2 }}>
-        <SquareBox
-          onPress={this.openForum.bind(this, forum)}
-          title={forum.name}
-          label="7/10"
-          smallIcon="envelope-open"
-          right={rowID % 2 === 0}
-          icon={forum.icon}
-        />
+        <SquareBox onPress={this.openForum.bind(this, forum)} title={forum.name} right={rowID % 2 === 0} icon={forum.icon} />
       </View>
     );
   }
@@ -89,10 +76,7 @@ class Forum extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <NoContent
-          title="Nenhum fórum encontrado"
-          visible={this.forums.length === 0}
-        />
+        <NoContent title="Nenhum fórum encontrado" visible={this.forums.length === 0} />
         <ListView
           contentContainerStyle={styles.list}
           enableEmptySections={true}

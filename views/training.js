@@ -97,6 +97,10 @@ class Training extends React.Component {
         answers: this.answers
       });
 
+      firebase.database().ref('subjects/' + this.state.subject.id).once('value', subjectSnapshop => {
+        firebase.database().ref('subjects/' + this.state.subject.id + '/training').set(subjectSnapshop.val().training + 1);
+      });
+
       this.props.navigation.navigate('Results', {
         training: ref.key,
         answers: this.answers

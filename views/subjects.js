@@ -67,16 +67,22 @@ class Subjects extends React.Component {
   handleSubjects(snapshop) {
     const subjects = snapshop.val() || {};
 
-    Object.keys(subjects).forEach(key => {
-      firebase.database().ref('subjects/' + key).once('value', snapshopSubject => {
-        this.subjects[key] = snapshopSubject.val();
+    if (Object.keys(subjects).length > 0) {
+      Object.keys(subjects).forEach(key => {
+        firebase.database().ref('subjects/' + key).on('value', snapshopSubject => {
+          this.subjects[key] = snapshopSubject.val();
 
-        this.setState({
-          loading: false,
-          subjects: this.listView.cloneWithRows(this.subjects)
+          this.setState({
+            loading: false,
+            subjects: this.listView.cloneWithRows(this.subjects)
+          });
         });
       });
-    });
+    } else {
+      this.setState({
+        loading: false
+      });
+    }
   }
 
   openSubject(subject) {
@@ -86,7 +92,11 @@ class Subjects extends React.Component {
   renderSubject(subject) {
     if (!subject) return null;
 
-    const icons = [{ name: 'people', value: '0' }, { name: 'question', value: '0' }, { name: 'envelope-open', value: '0' }];
+    const icons = [
+      { name: 'people', value: subject.students },
+      { name: 'question', value: subject.quizes },
+      { name: 'envelope-open', value: subject.forum }
+    ];
 
     return <IconBox title={subject.name} onPress={this.openSubject.bind(this, subject)} subjectIcon={subject.icon} icons={icons} />;
   }

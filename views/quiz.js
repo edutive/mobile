@@ -11,7 +11,8 @@ import {
   KeyboardAvoidingView,
   Platform,
   Dimensions,
-  Keyboard
+  Keyboard,
+  ScrollView
 } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
@@ -147,7 +148,7 @@ class Quiz extends React.Component {
       Object.keys(this.state.questions) &&
       Object.keys(this.state.questions)[this.state.currentQuestion] &&
       this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]] &&
-      this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].title
+      this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].question
         ? this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]]
         : false;
 
@@ -165,32 +166,34 @@ class Quiz extends React.Component {
           </TouchableOpacity>
         </View>
         <View style={styles.card}>
-          <Text style={styles.question}>
-            {question ? question.title : 'Carregando...'}
-          </Text>
+          <ScrollView>
+            <Text style={styles.question}>
+              {question ? question.question : 'Carregando...'}
+            </Text>
+          </ScrollView>
           <View style={styles.options}>
             <View style={styles.optionsRow}>
               <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginRight: 4 }]} onPress={this.nextQuestion.bind(this, 'a')}>
                 <Text style={Styles.buttonText}>
-                  {question ? question.options.a : '-'}
+                  {question ? question.option1 : '-'}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginLeft: 4 }]} onPress={this.nextQuestion.bind(this, 'b')}>
                 <Text style={Styles.buttonText}>
-                  {question ? question.options.b : '-'}
+                  {question ? question.option2 : '-'}
                 </Text>
               </TouchableOpacity>
             </View>
-            {question && question.options.c
+            {question && question.option3
               ? <View style={styles.optionsRow}>
                   <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginRight: 4 }]} onPress={this.nextQuestion.bind(this, 'c')}>
                     <Text style={Styles.buttonText}>
-                      {question ? question.options.c : '-'}
+                      {question ? question.option3 : '-'}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity style={[Styles.buttonOragen, styles.option, { marginLeft: 4 }]} onPress={this.nextQuestion.bind(this, 'd')}>
                     <Text style={Styles.buttonText}>
-                      {question ? question.options.d : '-'}
+                      {question ? question.option4 : '-'}
                     </Text>
                   </TouchableOpacity>
                 </View>

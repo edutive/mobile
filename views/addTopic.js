@@ -39,7 +39,8 @@ class AddTopic extends React.Component {
 
     this.state = {
       message: '',
-      category: this.props.navigation.state.params
+      subject: this.props.navigation.state.params.subject,
+      category: this.props.navigation.state.params.category
     };
   }
 
@@ -51,6 +52,10 @@ class AddTopic extends React.Component {
       id: ref.key,
       name: this.state.message,
       user: global.USER.uid
+    });
+
+    firebase.database().ref('subjects/' + this.state.subject.id).once('value', subjectSnapshop => {
+      firebase.database().ref('subjects/' + this.state.subject.id + '/forum').set(subjectSnapshop.val().forum + 1);
     });
 
     this.props.navigation.goBack();

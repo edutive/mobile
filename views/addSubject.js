@@ -45,10 +45,16 @@ class AddSubject extends React.Component {
 
   save() {
     this.ref = firebase.database().ref('subjects/' + this.state.message);
-    this.ref.on('value', subjectSnapshop => {
+    this.ref.once('value', subjectSnapshop => {
       if (subjectSnapshop.val()) {
-        const ref = firebase.database().ref('students/' + global.USER.uid + '/' + this.state.message).set(true);
-        this.props.navigation.goBack();
+        firebase.database().ref('students/' + global.USER.uid).once('value', subjects => {
+          if (!subjects.val() || !subjects.val()[this.state.message]) {
+            firebase.database().ref('subjects/' + this.state.message + '/students').set(subjectSnapshop.val().students + 1);
+          }
+
+          firebase.database().ref('students/' + global.USER.uid + '/' + this.state.message).set(true);
+          this.props.navigation.goBack();
+        });
       } else {
         Alert.alert('Disciplina', 'Disciplina não encontrada.');
       }

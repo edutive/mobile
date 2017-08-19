@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  AppRegistry,
-  TouchableOpacity,
-  Text,
-  ListView,
-  Alert,
-  View
-} from 'react-native';
+import { AppRegistry, TouchableOpacity, Text, ListView, Alert, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -44,24 +37,18 @@ class Subject extends React.Component {
             title="Quizes"
             smallIcon="check"
             icon="question"
-            label="7/10"
+            label={this.state.subject.quizes}
             right={true}
             onPress={this.openPage.bind(this, 'Quizes')}
           />
-          <SquareBox
-            title="Resultados"
-            smallIcon="graph"
-            icon="chart"
-            label="80%"
-            onPress={this.openPage.bind(this, 'Results')}
-          />
+          <SquareBox title="Resultados" icon="chart" onPress={this.openPage.bind(this, 'Results')} />
         </View>
         <View style={Styles.row2}>
           <SquareBox
             title="Treinamentos"
             smallIcon="badge"
             icon="speedometer"
-            label="7/10"
+            label={this.state.subject.training}
             right={true}
             onPress={this.openPage.bind(this, 'Trainings')}
           />
@@ -69,7 +56,7 @@ class Subject extends React.Component {
             title="Fórum"
             smallIcon="envelope-letter"
             icon="envelope-open"
-            label="5"
+            label={this.state.subject.forum}
             onPress={this.openPage.bind(this, 'Forum')}
           />
         </View>

@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  AppRegistry,
-  TouchableOpacity,
-  Text,
-  ListView,
-  Alert,
-  View
-} from 'react-native';
+import { AppRegistry, TouchableOpacity, Text, ListView, Alert, View } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -35,7 +28,8 @@ class ForumCategory extends React.Component {
     });
 
     this.state = {
-      forum: this.props.navigation.state.params,
+      subject: this.props.navigation.state.params.subject,
+      forum: this.props.navigation.state.params.forum,
       users: {},
       topics: this.listView.cloneWithRows({})
     };
@@ -63,17 +57,14 @@ class ForumCategory extends React.Component {
 
       if (topic) {
         if (!this.state.users[topic.user]) {
-          firebase
-            .database()
-            .ref('users/' + topic.user)
-            .once('value', userSnap => {
-              const users = this.state.users;
-              users[topic.user] = userSnap.val();
+          firebase.database().ref('users/' + topic.user).once('value', userSnap => {
+            const users = this.state.users;
+            users[topic.user] = userSnap.val();
 
-              this.setState({
-                users: users
-              });
+            this.setState({
+              users: users
             });
+          });
         }
       }
     });
@@ -85,7 +76,10 @@ class ForumCategory extends React.Component {
   }
 
   addTopic() {
-    this.props.navigation.navigate('AddTopic', this.state.forum);
+    this.props.navigation.navigate('AddTopic', {
+      subject: this.state.subject,
+      category: this.state.forum
+    });
   }
 
   openMessage(topic) {
@@ -101,31 +95,16 @@ class ForumCategory extends React.Component {
     if (!topic) return null;
 
     return (
-      <UserBox
-        user={this.state.users[topic.user]}
-        description={topic.name}
-        descriptionIcon="envelope"
-        onPress={this.openMessage.bind(this, topic)}
-      />
+      <UserBox user={this.state.users[topic.user]} description={topic.name} descriptionIcon="envelope" onPress={this.openMessage.bind(this, topic)} />
     );
   }
 
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <NoContent
-          title="Nenhum tópico encontrado"
-          visible={Object.keys(this.topics).length === 0}
-        />
-        <ListView
-          enableEmptySections={true}
-          dataSource={this.state.topics}
-          renderRow={this.renderMessages.bind(this)}
-        />
-        <ActionButton
-          buttonColor={Constants.colors.orange}
-          onPress={this.addTopic.bind(this)}
-        />
+        <NoContent title="Nenhum tópico encontrado" visible={Object.keys(this.topics).length === 0} />
+        <ListView enableEmptySections={true} dataSource={this.state.topics} renderRow={this.renderMessages.bind(this)} />
+        <ActionButton buttonColor={Constants.colors.orange} onPress={this.addTopic.bind(this)} />
       </View>
     );
   }
