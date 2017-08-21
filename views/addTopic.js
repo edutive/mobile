@@ -45,20 +45,22 @@ class AddTopic extends React.Component {
   }
 
   save() {
-    const ref = firebase.database().ref('topics').child(this.state.category.id).push();
-    newChatKey = ref.key;
+    if (this.state.message.length > 0) {
+      const ref = firebase.database().ref('topics').child(this.state.category.id).push();
+      newChatKey = ref.key;
 
-    ref.set({
-      id: ref.key,
-      name: this.state.message,
-      user: global.USER.uid
-    });
+      ref.set({
+        id: ref.key,
+        name: this.state.message,
+        user: global.USER.uid
+      });
 
-    firebase.database().ref('subjects/' + this.state.subject.id).once('value', subjectSnapshop => {
-      firebase.database().ref('subjects/' + this.state.subject.id + '/forum').set(subjectSnapshop.val().forum + 1);
-    });
+      firebase.database().ref('subjects/' + this.state.subject.id).once('value', subjectSnapshop => {
+        firebase.database().ref('subjects/' + this.state.subject.id + '/forum').set(subjectSnapshop.val().forum + 1);
+      });
 
-    this.props.navigation.goBack();
+      this.props.navigation.goBack();
+    }
   }
 
   render() {
@@ -69,6 +71,7 @@ class AddTopic extends React.Component {
             <TextInput
               placeholder="Digite o nome"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={message => this.setState({ message })}
               value={this.state.message}
               underlineColorAndroid="transparent"
@@ -95,7 +98,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.05,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    elevation: 2
   },
   inputArea: {
     flex: 1,

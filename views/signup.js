@@ -154,6 +154,7 @@ class SignUp extends React.Component {
             <TextInput
               autoCapitalize="none"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={firstname => this.setState({ firstname })}
               value={this.state.firstname}
               onSubmitEditing={() => this.refs.lastname.focus()}
@@ -165,6 +166,7 @@ class SignUp extends React.Component {
               ref="lastname"
               autoCapitalize="none"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={lastname => this.setState({ lastname })}
               value={this.state.lastname}
               onSubmitEditing={() => this.refs.email.focus()}
@@ -177,6 +179,7 @@ class SignUp extends React.Component {
               keyboardType="email-address"
               autoCapitalize="none"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={email => this.setState({ email })}
               value={this.state.email}
               onSubmitEditing={() => this.refs.password.focus()}
@@ -188,6 +191,7 @@ class SignUp extends React.Component {
               ref="password"
               secureTextEntry={true}
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={password => this.setState({ password })}
               value={this.state.password}
             />

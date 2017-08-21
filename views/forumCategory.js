@@ -15,7 +15,7 @@ import ActionButton from 'react-native-action-button';
 
 class ForumCategory extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.state.params.name,
+    title: navigation.state.params.forum.name,
     headerTintColor: '#FFF',
     headerStyle: Styles.headerStyle
   });

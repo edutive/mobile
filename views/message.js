@@ -60,13 +60,13 @@ class Message extends React.Component {
     this.ref = firebase.database().ref('messages/' + this.state.chat.chat);
     this.ref.on('value', this.handleMessages.bind(this));
 
-    Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
-    Keyboard.addListener('keyboardWillHide', this.keyboardWillHide.bind(this));
+    Keyboard.addListener('keyboardDidShow', this.keyboardWillShow.bind(this));
+    Keyboard.addListener('keyboardDidHide', this.keyboardWillHide.bind(this));
   }
 
   componentWillUnmount() {
-    Keyboard.removeListener('keyboardWillShow');
-    Keyboard.removeListener('keyboardWillHide');
+    Keyboard.removeListener('keyboardDidShow');
+    Keyboard.removeListener('keyboardDidHide');
 
     if (this.ref) {
       this.ref.off('value', this.handleMessages.bind(this));
@@ -107,15 +107,9 @@ class Message extends React.Component {
       text: this.state.message
     });
 
-    firebase
-      .database()
-      .ref('chats/' + global.USER.uid + '/' + this.state.chat.chat + '/lastMessage')
-      .set(this.state.message);
+    firebase.database().ref('chats/' + global.USER.uid + '/' + this.state.chat.chat + '/lastMessage').set(this.state.message);
 
-    firebase
-      .database()
-      .ref('chats/' + this.state.chat.user + '/' + this.state.chat.chat + '/lastMessage')
-      .set(this.state.message);
+    firebase.database().ref('chats/' + this.state.chat.user + '/' + this.state.chat.chat + '/lastMessage').set(this.state.message);
 
     this.setState({
       message: ''
@@ -128,21 +122,9 @@ class Message extends React.Component {
     const date = moment.unix(message.date / 1000).fromNow();
 
     return (
-      <View
-        style={[
-          styles.box,
-          global.USER.uid === message.sender && styles.fromMe,
-          global.USER.uid !== message.sender && styles.toMe
-        ]}
-      >
-        <View
-          style={[
-            styles.rowBox,
-            global.USER.uid === message.sender && styles.fromMe,
-            global.USER.uid !== message.sender && styles.toMe
-          ]}
-        >
-          <Text style={[styles.dateFromMe, { color: Constants.colors.blue }]}>
+      <View style={[styles.box, global.USER.uid === message.sender && styles.fromMe, global.USER.uid !== message.sender && styles.toMe]}>
+        <View style={[global.USER.uid === message.sender && styles.rowBoxFromMe, global.USER.uid !== message.sender && styles.rowBoxToMe]}>
+          <Text style={[global.USER.uid === message.sender && styles.dateFromMe, { color: Constants.colors.blue }]}>
             {message.text}
           </Text>
         </View>
@@ -171,6 +153,7 @@ class Message extends React.Component {
             <TextInput
               placeholder="Digite sua mensagem"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={message => this.setState({ message })}
               value={this.state.message}
               onFocus={() => this.refs.listView.scrollToEnd({ animated: true })}
@@ -192,10 +175,17 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16
   },
-  rowBox: {
+  rowBoxFromMe: {
     padding: 10,
     borderRadius: 8,
+    marginLeft: 40,
     backgroundColor: Constants.colors.yellow
+  },
+  rowBoxToMe: {
+    padding: 10,
+    borderRadius: 8,
+    marginRight: 40,
+    backgroundColor: '#FFF'
   },
   fromMe: {
     alignSelf: 'flex-end'
@@ -224,7 +214,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.05,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    elevation: 2
   },
   inputArea: {
     flex: 1,

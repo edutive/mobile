@@ -3,6 +3,15 @@
 
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-multidex-1.0.1_d28871bb80152c6905b03b5108557674c99ca12f.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -30,6 +39,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_13da93546dbf8a85e6aac3492735cec2a906e6ba.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -39,12 +57,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.3.1_56099373f6e45f0896b4f9cc34e07f682a0401b6.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-database-connection/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="5c1f80f62ccad560edcd6609fc75f385cf7cb45a">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-database-connection-10.2.6_ce800b7f616cd0666f0f844ba0e4387edecc725b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_20c2e36ed96a413f017f96bf30d5d2565e2c08ab.jar" />
     </item>
     <item
         is-multidex="false"
@@ -66,264 +102,21 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/paulomenezes/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3fab83f25be177b1a42d6e75a05c3465c6df3800.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_f2d2ffcfc7b802f5522b0a9b6a1985f3620e2dd6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_fe5d991dffbec225ace5a0612a553b528b14b74b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.3.1_463807e885b6b65668dedba5bd0e6426e4272cd6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-10.2.6_d1b19023e01af390994f984832977c5961158f0c.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="7b3eaf755284fb08a6d616a55fbb07dc3917d5e7">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-auth-10.2.6_506b52bcaeb733e02849a75a88b36c98658ad082.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.3.1_12ea9db2adfdabf41c0686de9f4039affa2dd2d2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-impl-10.2.6_753c673fde982bb996142ee07b76e1dd1da8a8f5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_545a21ee870100a809f2b34e0da1b97fd599008b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-fbsdk/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="71519d58111acda15d5cb2be4d54674f96cb7ba9">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/edutive-react-native-fbsdk-unspecified_9016eb08d4a6ece0e17e2524880af3222ae9b3d9.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.m2/repository/com/google/code/findbugs/jsr305/3.0.0/jsr305-3.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_ae36cea31f4c4e47220c5a3f0c622e8987e0822b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_545a21ee870100a809f2b34e0da1b97fd599008b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c5526d30278eb171f4a1325bd6b927c9057c91f4">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.46.4_5c64f37fcec9917045fd8b36fa77f30f0c1a8c5f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_ad72dc666db5b8f6ee2122b48990130b80cc31b3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="ba4defc8cb4ed5b90b8ef71602722cdeebe507cd">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-storage-10.2.6_64f3a1132a5ef4ce4069cfe46e256393a6655744.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.6_e60c6f3a87a53e3ea5e58e53dfe8796cad47c265.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.6_fc45eda1e7727e0edf8831f260f4acd31f47de4f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.3.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.3.1_ffbb7a496d4686b5343612437b011b8cbad9048d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-vector-icons/unspecified/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="b319ff9834bbeb9be394687614eb86892699ea14">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/edutive-react-native-vector-icons-unspecified_019eed004339f711158adab60cbb8229851d5536.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="c4ba6d53176502b2672a5d7d25a0000d1a6e701c">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-config-10.2.6_76e141a1b90966219340c0e39092d74b1f090602.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3fab83f25be177b1a42d6e75a05c3465c6df3800.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_cb480ef540c00b6e9fdbcf94b2a5d05e998a88cc.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.2.6/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="9ff5114aff3bfb387577ba92a11408dcf0441c24">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-messaging-10.2.6_4905bdfb2d82d2a1911c0338fa710172c34f4350.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_fe5d991dffbec225ace5a0612a553b528b14b74b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/multidex/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="78ea232052df889856dcb7b7b542707c89bb3bfb">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-multidex-1.0.1_d28871bb80152c6905b03b5108557674c99ca12f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/okhttp-urlconnection-3.6.0_13da93546dbf8a85e6aac3492735cec2a906e6ba.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.3"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.3.1_56099373f6e45f0896b4f9cc34e07f682a0401b6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_20c2e36ed96a413f017f96bf30d5d2565e2c08ab.jar" />
-    </item>
-    <item
-        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="150252b33b00274cc868578ade018fda0d43a3eb">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.3.1_3e9531c882bf6085188b8751239cdf5bb6fc556a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3fab83f25be177b1a42d6e75a05c3465c6df3800.jar" />
     </item>
     <item
         is-multidex="false"
@@ -345,6 +138,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_f2d2ffcfc7b802f5522b0a9b6a1985f3620e2dd6.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
         jumboMode="false"
         optimize="true"
@@ -354,12 +156,30 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.24.0/jars/classes.jar"
+        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="0e0e8918eb74e3ee9e82eef6430a4359b2b577d3">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.24.0_a26f3da387860057a2f8450fc390146eba98c955.jar" />
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_fe5d991dffbec225ace5a0612a553b528b14b74b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.25.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="474cccf169297d49fff89fd35b7634a7a9d1031c">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.25.0_e32c1ba84adaa2467882d06d60d6bc8d40f9f0c3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.3.1_463807e885b6b65668dedba5bd0e6426e4272cd6.jar" />
     </item>
     <item
         is-multidex="false"
@@ -399,6 +219,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_04da258300fc1a318e32ddeedfc54dc7278330a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-firebase/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -408,12 +237,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_04da258300fc1a318e32ddeedfc54dc7278330a1.jar" />
+        sha1="d79c575e1d97b0298746a4c032a0c1dc201c2f82">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-10.2.6_d1b19023e01af390994f984832977c5961158f0c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -435,12 +264,48 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-auth/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="7b3eaf755284fb08a6d616a55fbb07dc3917d5e7">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-auth-10.2.6_506b52bcaeb733e02849a75a88b36c98658ad082.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.3.1_12ea9db2adfdabf41c0686de9f4039affa2dd2d2.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/customtabs/25.3.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="807751a24cf96566fd8675517c94d8463cf364db">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-customtabs-25.3.1_921d7a03ea3fc32e79438260576236ae82c30c34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="da832806828ba407284c0c4b1d87b8f9ed9f2520">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-analytics-impl-10.2.6_753c673fde982bb996142ee07b76e1dd1da8a8f5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_545a21ee870100a809f2b34e0da1b97fd599008b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -453,6 +318,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-fbsdk/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="71519d58111acda15d5cb2be4d54674f96cb7ba9">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/edutive-react-native-fbsdk-unspecified_9016eb08d4a6ece0e17e2524880af3222ae9b3d9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/.m2/repository/com/google/code/findbugs/jsr305/3.0.0/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_ae36cea31f4c4e47220c5a3f0c622e8987e0822b.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -462,12 +345,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/staticlayout-proxy-1.0_545a21ee870100a809f2b34e0da1b97fd599008b.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_649f98d2d533697d06368518b36db9992eec8a52.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.46.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c5526d30278eb171f4a1325bd6b927c9057c91f4">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.46.4_5c64f37fcec9917045fd8b36fa77f30f0c1a8c5f.jar" />
     </item>
     <item
         is-multidex="false"
@@ -507,6 +408,42 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-svg/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="d455b2c59549ffe2f3a66a553ef45dacc8a50e97">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/edutive-react-native-svg-unspecified_20c84295aa7ddee0af4eeffd6f22d32659e46605.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/okio-1.13.0_ad72dc666db5b8f6ee2122b48990130b80cc31b3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="ba4defc8cb4ed5b90b8ef71602722cdeebe507cd">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-storage-10.2.6_64f3a1132a5ef4ce4069cfe46e256393a6655744.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3f0a85e6000998ac322ddd50750e8cf91601a84b">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-10.2.6_e60c6f3a87a53e3ea5e58e53dfe8796cad47c265.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -522,6 +459,24 @@
         revision="23.0.3"
         sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.3.1_11dfc3e00d2970fd593fbde8448e7d544e1a47cf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="69e74a8b1cbf5b8ee0fc0cca6bab1ac6c45efef8">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-10.2.6_fc45eda1e7727e0edf8831f260f4acd31f47de4f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.3.1_ffbb7a496d4686b5343612437b011b8cbad9048d.jar" />
     </item>
     <item
         is-multidex="false"
@@ -543,12 +498,57 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="b319ff9834bbeb9be394687614eb86892699ea14">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/edutive-react-native-vector-icons-unspecified_019eed004339f711158adab60cbb8229851d5536.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-common/10.2.6/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="0a534044236cf81b002604643d23e7ca56bd1ee0">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-common-10.2.6_346041962c6dd4369acbc9a629b2816610f937ee.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/edutive/react-native-image-picker/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="185debb713f05e6ae262b4167d7645dce64ca4cb">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/edutive-react-native-image-picker-unspecified_a6f6f2b281e7fb9bf8ab072b8eb36e9221078c41.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-config/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="c4ba6d53176502b2672a5d7d25a0000d1a6e701c">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-config-10.2.6_76e141a1b90966219340c0e39092d74b1f090602.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_3fab83f25be177b1a42d6e75a05c3465c6df3800.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="5a61f17cd72e20aa4323cbf5f909b7c609619275">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.0.1_cb480ef540c00b6e9fdbcf94b2a5d05e998a88cc.jar" />
     </item>
     <item
         is-multidex="false"
@@ -561,12 +561,30 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.google.firebase/firebase-messaging/10.2.6/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="9ff5114aff3bfb387577ba92a11408dcf0441c24">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.google.firebase-firebase-messaging-10.2.6_4905bdfb2d82d2a1911c0338fa710172c34f4350.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.3"
         sha1="050f688115ea65a0292d8483a6ffe6bcdab1e2ef">
         <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.0.1_20c2e36ed96a413f017f96bf30d5d2565e2c08ab.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/paulomenezes/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/paulomenezes/Documents/repositories/edutive/mobile/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_fe5d991dffbec225ace5a0612a553b528b14b74b.jar" />
     </item>
 
 </items>

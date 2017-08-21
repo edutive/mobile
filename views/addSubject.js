@@ -44,21 +44,23 @@ class AddSubject extends React.Component {
   }
 
   save() {
-    this.ref = firebase.database().ref('subjects/' + this.state.message);
-    this.ref.once('value', subjectSnapshop => {
-      if (subjectSnapshop.val()) {
-        firebase.database().ref('students/' + global.USER.uid).once('value', subjects => {
-          if (!subjects.val() || !subjects.val()[this.state.message]) {
-            firebase.database().ref('subjects/' + this.state.message + '/students').set(subjectSnapshop.val().students + 1);
-          }
+    if (this.state.message.length > 0) {
+      this.ref = firebase.database().ref('subjects/' + this.state.message);
+      this.ref.once('value', subjectSnapshop => {
+        if (subjectSnapshop.val()) {
+          firebase.database().ref('students/' + global.USER.uid).once('value', subjects => {
+            if (!subjects.val() || !subjects.val()[this.state.message]) {
+              firebase.database().ref('subjects/' + this.state.message + '/students').set(subjectSnapshop.val().students + 1);
+            }
 
-          firebase.database().ref('students/' + global.USER.uid + '/' + this.state.message).set(true);
-          this.props.navigation.goBack();
-        });
-      } else {
-        Alert.alert('Disciplina', 'Disciplina não encontrada.');
-      }
-    });
+            firebase.database().ref('students/' + global.USER.uid + '/' + this.state.message).set(true);
+            this.props.navigation.goBack();
+          });
+        } else {
+          Alert.alert('Disciplina', 'Disciplina não encontrada.');
+        }
+      });
+    }
   }
 
   render() {
@@ -69,6 +71,7 @@ class AddSubject extends React.Component {
             <TextInput
               placeholder="Digite o código da disciplina"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={message => this.setState({ message })}
               value={this.state.message}
               underlineColorAndroid="transparent"
@@ -95,7 +98,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.05,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    elevation: 2
   },
   inputArea: {
     flex: 1,

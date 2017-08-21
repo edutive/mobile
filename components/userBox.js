@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, TouchableOpacity, Text, View } from 'react-native';
+import { AppRegistry, TouchableOpacity, Text, View, Dimensions } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -7,6 +7,8 @@ import Constants from '../contants';
 import Styles from '../styles';
 
 import UserPicture from '../components/userPicture';
+
+const width = Dimensions.get('window').width;
 
 class UserBox extends React.Component {
   constructor(props) {
@@ -27,7 +29,7 @@ class UserBox extends React.Component {
             {this.props.description
               ? <View style={Styles.rowBoxContent}>
                   <Icon name={this.props.descriptionIcon} size={18} color={Constants.colors.blue} />
-                  <Text style={Styles.rowBoxContentText}>
+                  <Text style={[Styles.rowBoxContentText, { width: width - 130 }]}>
                     {this.props.description}
                   </Text>
                 </View>

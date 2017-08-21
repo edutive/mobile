@@ -101,10 +101,23 @@ class AddChat extends React.Component {
   }
 
   openMessage(user, key) {
-    firebase.database().ref('chats/' + global.USER.uid).orderByChild('user').startAt(key).once('value', snapshop => {
+    firebase.database().ref('chats/' + global.USER.uid).once('value', snapshop => {
       let newChatKey = null;
+      let exists = -1;
 
-      if (!snapshop.val()) {
+      console.log('chats', snapshop.val());
+
+      if (snapshop.val()) {
+        Object.keys(snapshop.val()).forEach((chatKey, index) => {
+          const chat = snapshop.val()[chatKey];
+
+          if (chat.user === key) {
+            exists = index;
+          }
+        });
+      }
+
+      if (exists === -1) {
         const messageId = new Date().getTime();
 
         const ref = firebase.database().ref('chats').child(global.USER.uid).push();
@@ -127,7 +140,7 @@ class AddChat extends React.Component {
       }
 
       this.props.navigation.navigate('Message', {
-        chat: snapshop.val() ? snapshop.val()[Object.keys(snapshop.val())[0]] : { chat: newChatKey, user: key },
+        chat: exists > -1 ? snapshop.val()[Object.keys(snapshop.val())[exists]] : { chat: newChatKey, user: key },
         user: user
       });
     });
@@ -149,6 +162,7 @@ class AddChat extends React.Component {
             <TextInput
               placeholder="Procurar usuário"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={message => this.setState({ message })}
               value={this.state.message}
               underlineColorAndroid="transparent"
@@ -198,7 +212,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.05,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    elevation: 2
   },
   inputArea: {
     flex: 1,

@@ -57,7 +57,8 @@ module.exports = {
     fontSize: 16,
     color: Constants.colors.blue,
     marginLeft: 5,
-    marginRight: 10
+    marginRight: 10,
+    height: 20
   },
   rowBoxContentTextNoMargin: {
     fontSize: 16,
@@ -133,6 +134,7 @@ module.exports = {
       height: 0
     },
     shadowRadius: 5,
-    shadowOpacity: 0.3
+    shadowOpacity: 0.3,
+    elevation: 2
   }
 };

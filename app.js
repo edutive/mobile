@@ -45,11 +45,15 @@ const Home = TabNavigator(
     tabBarPosition: 'bottom',
     animationEnabled: true,
     tabBarOptions: {
+      showIcon: true,
       activeTintColor: Constants.colors.orange,
       inactiveTintColor: Constants.colors.blue,
       labelStyle: {
-        fontSize: 14,
+        fontSize: 11,
         marginBottom: 10
+      },
+      indicatorStyle: {
+        backgroundColor: 'transparent'
       },
       style: {
         height: 70,
@@ -61,7 +65,8 @@ const Home = TabNavigator(
           height: -2
         },
         shadowRadius: 5,
-        shadowOpacity: 0.05
+        shadowOpacity: 0.05,
+        elevation: 4
       }
     }
   }

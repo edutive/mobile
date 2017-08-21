@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, Button, Text, TextInput, ListView, Alert, View, Image, StyleSheet, AsyncStorage } from 'react-native';
+import { Text, Alert, View, Image, StyleSheet, AsyncStorage, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
@@ -54,8 +54,12 @@ class Profile extends React.Component {
           {`${global.USER.firstname} ${global.USER.lastname}`}
         </Text>
         <View style={styles.logout}>
-          <Icon name="pencil" size={20} color="#FFF" onPress={this.editProfile.bind(this)} />
-          <Icon name="logout" size={20} color="#FFF" onPress={this.logout.bind(this)} />
+          <TouchableOpacity onPress={this.editProfile.bind(this)}>
+            <Icon name="pencil" size={20} color="#FFF" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={this.logout.bind(this)}>
+            <Icon name="logout" size={20} color="#FFF" />
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -77,7 +81,10 @@ const styles = StyleSheet.create({
   logout: {
     position: 'absolute',
     top: 32,
-    right: 16
+    right: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 60
   }
 });
 

@@ -162,6 +162,7 @@ class Login extends React.Component {
                 keyboardType="email-address"
                 autoCapitalize="none"
                 style={Styles.input}
+                underlineColorAndroid="transparent"
                 onChangeText={email => this.setState({ email })}
                 value={this.state.email}
                 onSubmitEditing={() => this.refs.password.focus()}
@@ -173,6 +174,7 @@ class Login extends React.Component {
                 ref="password"
                 secureTextEntry={true}
                 style={Styles.input}
+                underlineColorAndroid="transparent"
                 onChangeText={password => this.setState({ password })}
                 value={this.state.password}
               />
@@ -203,7 +205,7 @@ const styles = StyleSheet.create({
     backgroundColor: Constants.colors.blue
   },
   container: {
-    height: height,
+    height: height - 20,
     justifyContent: 'space-between'
   },
   logo: {

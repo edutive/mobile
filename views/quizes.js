@@ -83,7 +83,7 @@ class Quizes extends React.Component {
             this.quizes[key] = quiz;
           }
         } else {
-          if (this.state.student[quiz.subject]) {
+          if (this.state.student && this.state.student[quiz.subject]) {
             this.quizes[key] = quiz;
           }
         }

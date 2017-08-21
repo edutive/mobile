@@ -67,7 +67,7 @@ class Subjects extends React.Component {
   handleSubjects(snapshop) {
     const subjects = snapshop.val() || {};
 
-    if (Object.keys(subjects).length > 0) {
+    if (subjects && Object.keys(subjects).length > 0) {
       Object.keys(subjects).forEach(key => {
         firebase.database().ref('subjects/' + key).on('value', snapshopSubject => {
           this.subjects[key] = snapshopSubject.val();

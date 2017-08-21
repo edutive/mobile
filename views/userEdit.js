@@ -100,6 +100,8 @@ class UserEdit extends React.Component {
     ImagePicker.showImagePicker(
       {
         title: 'Selecionar Foto',
+        takePhotoButtonTitle: 'Tirar foto...',
+        chooseFromLibraryButtonTitle: 'Escolher da biblioteca...',
         maxWidth: 200,
         maxHeight: 200,
         cameraType: 'front',
@@ -145,6 +147,7 @@ class UserEdit extends React.Component {
             <TextInput
               autoCapitalize="none"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={firstname => this.setState({ firstname })}
               value={this.state.firstname}
               onSubmitEditing={() => this.refs.lastname.focus()}
@@ -156,6 +159,7 @@ class UserEdit extends React.Component {
               ref="lastname"
               autoCapitalize="none"
               style={Styles.input}
+              underlineColorAndroid="transparent"
               onChangeText={lastname => this.setState({ lastname })}
               value={this.state.lastname}
             />

@@ -65,13 +65,13 @@ class ForumTopic extends React.Component {
     this.ref = firebase.database().ref('forums/' + this.state.topic.id);
     this.ref.on('value', this.handleMessages.bind(this));
 
-    Keyboard.addListener('keyboardWillShow', this.keyboardWillShow.bind(this));
-    Keyboard.addListener('keyboardWillHide', this.keyboardWillHide.bind(this));
+    Keyboard.addListener('keyboardDidShow', this.keyboardWillShow.bind(this));
+    Keyboard.addListener('keyboardDidHide', this.keyboardWillHide.bind(this));
   }
 
   componentWillUnmount() {
-    Keyboard.removeListener('keyboardWillShow');
-    Keyboard.removeListener('keyboardWillHide');
+    Keyboard.removeListener('keyboardDidShow');
+    Keyboard.removeListener('keyboardDidHide');
 
     if (this.ref) {
       this.ref.off('value', this.handleMessages.bind(this));
@@ -86,17 +86,14 @@ class ForumTopic extends React.Component {
 
       if (this.forums[key]) {
         if (!this.state.users[this.forums[key].user]) {
-          firebase
-            .database()
-            .ref('users/' + this.forums[key].user)
-            .once('value', userSnap => {
-              const users = this.state.users;
-              users[this.forums[key].user] = userSnap.val();
+          firebase.database().ref('users/' + this.forums[key].user).once('value', userSnap => {
+            const users = this.state.users;
+            users[this.forums[key].user] = userSnap.val();
 
-              this.setState({
-                users: users
-              });
+            this.setState({
+              users: users
             });
+          });
         }
       }
     });
@@ -122,14 +119,11 @@ class ForumTopic extends React.Component {
   }
 
   sendMessage() {
-    firebase
-      .database()
-      .ref('forums/' + this.state.topic.id + '/' + new Date().getTime())
-      .set({
-        date: new Date().getTime(),
-        sender: global.USER.uid,
-        text: this.state.message
-      });
+    firebase.database().ref('forums/' + this.state.topic.id + '/' + new Date().getTime()).set({
+      date: new Date().getTime(),
+      sender: global.USER.uid,
+      text: this.state.message
+    });
 
     this.setState({
       message: ''
@@ -157,12 +151,8 @@ class ForumTopic extends React.Component {
             <View style={Styles.rowBoxPicture}>
               <Text style={Styles.rowBoxPictureLabel}>
                 {this.state.users[message.user]
-                  ? this.state.users[message.user].firstname
-                      .substr(0, 1)
-                      .toUpperCase() +
-                    this.state.users[message.user].lastname
-                      .substr(0, 1)
-                      .toUpperCase()
+                  ? this.state.users[message.user].firstname.substr(0, 1).toUpperCase() +
+                    this.state.users[message.user].lastname.substr(0, 1).toUpperCase()
                   : '-'}
               </Text>
             </View>
@@ -190,15 +180,13 @@ class ForumTopic extends React.Component {
               placeholder="Participe da discursão"
               style={Styles.input}
               multiline={true}
+              underlineColorAndroid="transparent"
               onChangeText={message => this.setState({ message })}
               value={this.state.message}
               underlineColorAndroid="transparent"
             />
           </View>
-          <TouchableOpacity
-            style={styles.sendButton}
-            onPress={this.sendMessage.bind(this)}
-          >
+          <TouchableOpacity style={styles.sendButton} onPress={this.sendMessage.bind(this)}>
             <Icon name="paper-plane" size={16} color="#FFF" />
           </TouchableOpacity>
         </View>
@@ -244,7 +232,8 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 5,
     shadowOpacity: 0.05,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    elevation: 2
   },
   inputArea: {
     flex: 1,
