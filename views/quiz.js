@@ -110,7 +110,10 @@ class Quiz extends React.Component {
       question: Object.keys(this.state.questions)[this.state.currentQuestion],
       answer: answer,
       correct: answer === this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].correctOption,
-      doubt: this.state.doubt
+      doubt: this.state.doubt,
+      subject: this.state.subject.id,
+      content: this.state.questions[Object.keys(this.state.questions)[this.state.currentQuestion]].content,
+      quiz: this.state.quiz.name
     });
 
     if (this.state.currentQuestion < Object.keys(this.state.questions).length - 1) {
@@ -125,7 +128,8 @@ class Quiz extends React.Component {
 
       this.props.navigation.navigate('Results', {
         quiz: this.state.quiz,
-        answers: this.answers
+        answers: this.answers,
+        questions: this.state.questions
       });
     }
   }
